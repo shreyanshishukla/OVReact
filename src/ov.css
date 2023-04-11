@@ -1,0 +1,23 @@
+.background-filter::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: .8;
+    background: red;
+}
+
+.background-filter {
+  position: relative;
+}
+
+.background {
+  background-image: url('./bg.pn');
+  width: 200px;
+  height: 200px;
+}
+.background span{
+position: absolute;
+    z-index: 1;
+    }

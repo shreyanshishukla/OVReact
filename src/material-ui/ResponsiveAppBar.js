@@ -17,7 +17,7 @@ import { Context } from '../Context';
 
 
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Home', 'Contact', 'FAQ','Complaint Corner'];
 const settings = [ 'Logout'];
 
 function ResponsiveAppBar() {
@@ -65,12 +65,12 @@ function ResponsiveAppBar() {
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: '.2rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Online-Voting 
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -104,7 +104,7 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="left">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
