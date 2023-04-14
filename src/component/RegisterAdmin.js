@@ -6,21 +6,21 @@ import axios from 'axios';
 
 
 
-export default function AddCandidates() {
+export default function RegisterAdmin() {
     const navigate=useNavigate()
     const onFinish = (values) => {
-        console.log('Received values of form: ', values);
-        axios.post('http://localhost:5000/admin/addCandidates', {
+        console.log('Received values of form: ', values);//firstname,lastname,email,password);
+        axios.post('http://localhost:5000/register-admin', {
           firstName: values.firstName,
           lastName: values.lastName,
-          party:values.party,
-          age:values.age
+          email:values.email,
+          password:values.password
         })
         .then((response) => {
 
           console.log(response);
         
-          navigate('/success')
+          navigate('/admin-login')
 
         }, (error) => {
           console.log(error);
@@ -29,10 +29,11 @@ export default function AddCandidates() {
       };
   return (
     <>
-    <div>Add candidates!</div>
+    <div>Register Admin User</div>
     <Form
       name="normal_login"
       className="login-form"
+      initialValues={{ remember: true }}
       onFinish={onFinish}
     >
       <Form.Item
@@ -48,29 +49,42 @@ export default function AddCandidates() {
         <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Lastname" />
       </Form.Item>
       <Form.Item
-        name="party"
-        rules={[{ required: true, message: 'Please input Party name!' }]}
+        name="email"
+        rules={[{ required: true, message: 'Please input your Username!' }]}
       >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="party name" />
+        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="email" />
       </Form.Item>
       <Form.Item
-        name="age"
-        rules={[{ required: true, message: 'Please input age !' }]}
+        name="password"
+        rules={[{ required: true, message: 'Please input your Password!' }]}
       >
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
-          type="number"
-          placeholder="age"
+          type="password"
+          placeholder="Password"
         />
+      </Form.Item>
+      <Form.Item>
+        <Form.Item name="remember" valuePropName="checked" noStyle>
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
+
+        <a className="login-form-forgot" href="">
+          Forgot password
+        </a>
       </Form.Item>
 
       <Form.Item>
     
         <Button type="primary" htmlType="submit" className="login-form-button">
-          Add Candidate
+          Register
         </Button>
+        Or <Link to='/login'>Login  now!</Link>
       </Form.Item>
     </Form>
   </>
   )
 }
+
+
+

@@ -21,6 +21,8 @@ import VotingPage from './VotingPage';
 import VoterProfilePage from './VoterProfilePage';
 import backgroundImage from './../bg.png'
 import CandidateProfilePage from './CandidateProfilePage';
+import Adminlogin from './Admin-login';
+import AdminPortal from './AdminPortal';
 
 
 
@@ -28,7 +30,7 @@ const theme = createTheme({
   palette: {
     primary: {
       light: '#333333',
-      main: '#000000',
+      main: '#65647C',
       dark: '#000000',
       contrastText: '#fff',
     },
@@ -42,7 +44,7 @@ const theme = createTheme({
 });
 
 
-
+const  style={backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', height: "120vh", top:"20vh"}
 
 export default function Main() {
   const User=useContext(Context)
@@ -51,14 +53,16 @@ export default function Main() {
     return (
         <>
         
-       <Grid container style={{backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', height: "120vh", top:"20vh"}}>
+       <Grid container  style={{backgroundColor:"#C9CCD5"}}   > 
       <Grid item xs={12}>
 <ThemeProvider theme={theme}>
 <ResponsiveAppBar elevation={20}/>
 {User.showVotingPage && <VotingPage/>}
 {User.showCandidateProfilePage && <CandidateProfilePage/>}
 {User.showVoterProfilePage && <VoterProfilePage/>}
-
+{User.adminLoggin && <Adminlogin/>}
+{User.admin!={} && <AdminPortal/>}
+ 
 <Container style={{margin:"34px"}}>
     <Grid container spacing={24}>
   <Grid item md={3}>

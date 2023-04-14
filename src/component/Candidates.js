@@ -30,6 +30,8 @@ export default function Candidates() {
     User.setshowVoting(false);
     User.setshowVoterProfilePage(false);
     User.setshowCandidateProfilePage(true);
+    User.setadminLoggin(false);
+
 
   }
   const card = (

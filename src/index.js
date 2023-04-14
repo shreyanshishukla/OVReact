@@ -10,6 +10,8 @@ import Login from './component/Login';
 import Admin from './component/AdminComponents/Admin';
 import AddCandidates from './component/AdminComponents/AddCandidate';
 import AdminSuccess from './component/AdminComponents/AdminSucess';
+import RegisterAdmin from './component/RegisterAdmin' ;
+import Adminlogin from './component/Admin-login';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -24,9 +26,11 @@ root.render(
       <Route path='/register' element={<Register/>}></Route>
       <Route path='/login' element={<Login/>}></Route>
       <Route path='/Main' element={<Main/>}></Route>
-      <Route path = '/admin' element={<Admin/>}></Route>
+      <Route path = '/git remote -v' element={<Admin/>}></Route>
       <Route path= '/admin/addCandidate' element={<AddCandidates/>}></Route>
       <Route path = "/success" element={<AdminSuccess/>}></Route>
+      <Route path="/registeradmin" element={<RegisterAdmin/>}></Route>
+      <Route path='/admin-login' element={<Adminlogin/>}></Route>
     </Routes>
   </BrowserRouter>
   </React.StrictMode>

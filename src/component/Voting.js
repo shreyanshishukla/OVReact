@@ -29,6 +29,8 @@ export default function Voting() {
     User.setshowVoting(false);
     User.setshowVoterProfilePage(false);
     User.setshowCandidateProfilePage(false);
+    User.setadminLoggin(false);
+
 
   }
   const card = (
@@ -36,7 +38,7 @@ export default function Voting() {
 
     <React.Fragment>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography sx={{ fontSize: 14 }} color="#000" gutterBottom>
         <Button onClick={handleOnClick}>Voting......</Button>
           
   

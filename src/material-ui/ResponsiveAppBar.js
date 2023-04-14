@@ -17,7 +17,7 @@ import { Context } from '../Context';
 
 
 
-const pages = ['Home', 'Contact', 'FAQ','Complaint Corner'];
+const pages = ['Home', 'Contact', 'FAQ','Complaint Corner','Admin-Login'];
 const settings = [ 'Logout'];
 
 function ResponsiveAppBar() {
@@ -26,16 +26,27 @@ function ResponsiveAppBar() {
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
+  }
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
-  };
+  }
+  const User=useContext(Context)
+  
 
   const handleCloseNavMenu = () => {
+   
+  
+    User.setshowVotingPage(false);
+    User.setshowCandidateDetails(false);
+    User.setshowVoterProfile(false);
+    User.setshowVoting(false);
+    User.setshowVoterProfilePage(false);
+    User.setshowCandidateProfilePage(false);
+    User.setadminLoggin(true);
+  
     setAnchorElNav(null);
   };
-  const User=useContext(Context)
-  console.log(User)
+  
   const handleLogout = () => {
     setAnchorElUser(null);
     User.setUser("")
