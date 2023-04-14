@@ -2,23 +2,39 @@ import React, { useState , useEffect,useContext} from 'react'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { Link,useNavigate } from 'react-router-dom';
-import  {Context}  from '../Context'
+import  {Context,AdminContext}  from '../../Context'
 import axios from 'axios';
 
 
 
 export default function Adminlogin() {
  
- const User=useContext(Context)
- console.log("user",User)
+  const User=useContext(Context)
+ const Admin=useContext(AdminContext)
 
-
+  function handleOnClick()
+  {
+    User.setRegisterUser(false)
+    User.setisLoggedIn(false)
+    Admin.setRegisterAdmin(false)
+    User.setadminLoggin(false)
+    Admin.setadminLoggedIn (false)
+  }
+  function handleOnClickRegister()
+  {
+    User.setRegisterUser(false)
+    User.setisLoggedIn(false)
+    Admin.setRegisterAdmin(true)
+    User.setadminLoggin(false)
+    Admin.setadminLoggedIn (false)
+  }
+  
   const navigate=useNavigate()
     const onFinish = ({firstName,lastName,email,password}) => {
         console.log('Received values of form: ',    firstName,
         lastName,
         email,
-        password);//firstname,lastname,email,password);
+        password);
         axios.post('http://localhost:5000/admin-login', {
           firstName,
           lastName,
@@ -30,17 +46,23 @@ export default function Adminlogin() {
           if(!response.data.token)
           console.log("invalid pass or user id");
            else{
-            //@TODO 
-            //authorization
+         
             console.log(User.Admin)
-            User.setAdmin({
+            Admin.setAdmin({
             firstName,
             lastName,
             email,
             password
             })
-            User.setadminLoggin(false)
-        //   User.setisLoggedIn(true)
+    User.setshowVotingPage(false);
+    User.setshowCandidateDetails(false);
+    User.setshowVoterProfile(false);
+    User.setshowVoting(false);
+    User.setshowVoterProfilePage(false);
+    User.setshowCandidateProfilePage(false);
+    User.setadminLoggin(false)
+    Admin.setadminLoggedIn(true)
+
             
            }
         }, (error) => {
@@ -73,7 +95,7 @@ export default function Adminlogin() {
         name="email"
         rules={[{ required: true, message: 'Please input email !' }]}
       >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="party name" />
+        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="email" />
       </Form.Item>
       <Form.Item
         name="password"
@@ -85,13 +107,18 @@ export default function Adminlogin() {
           placeholder="password"
         />
       </Form.Item>
-
       <Form.Item>
-    
         <Button type="primary" htmlType="submit" className="login-form-button">
-        Login</Button>
-        
-        Or <Link to='/registeradmin'>Register admin user now!</Link>
+          Log in as Admin
+        </Button>
+        Or   <button  onClick={handleOnClickRegister} >
+          Register new Admin user
+        </button>
+      </Form.Item>
+      <Form.Item>
+        <button  onClick={handleOnClick} >
+          Click here to Login as Voter
+        </button>
       </Form.Item>
     
     </Form>

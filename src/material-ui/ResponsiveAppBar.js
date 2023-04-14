@@ -13,16 +13,19 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { createTheme,  ThemeProvider } from '@mui/material/styles';
-import { Context } from '../Context';
+import  {Context,AdminContext}  from '../Context'
 
 
 
-const pages = ['Home', 'Contact', 'FAQ','Complaint Corner','Admin-Login'];
+
 const settings = [ 'Logout'];
 
 function ResponsiveAppBar() {
+  const Admin=useContext(AdminContext)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const pages = ['Home', 'Contact', 'FAQ','Complaint Corner'];
+  
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -33,24 +36,19 @@ function ResponsiveAppBar() {
   const User=useContext(Context)
   
 
-  const handleCloseNavMenu = () => {
-   
-  
+
+  const handleLogout = () => {
+    setAnchorElUser(null);
+    User.setUser("")
+    User.setisLoggedIn(false)
     User.setshowVotingPage(false);
     User.setshowCandidateDetails(false);
     User.setshowVoterProfile(false);
     User.setshowVoting(false);
     User.setshowVoterProfilePage(false);
     User.setshowCandidateProfilePage(false);
-    User.setadminLoggin(true);
-  
-    setAnchorElNav(null);
-  };
-  
-  const handleLogout = () => {
-    setAnchorElUser(null);
-    User.setUser("")
-    User.setisLoggedIn(false)
+    User.setadminLoggin(false);
+    Admin.setadminLoggedIn(false);
 
   };
   const handleCloseUserMenu = () => {
@@ -58,6 +56,9 @@ function ResponsiveAppBar() {
    
 
   };
+  const handleCloseNavMenu=()=>{
+    setAnchorElUser(null);
+  }
   
  
   return (

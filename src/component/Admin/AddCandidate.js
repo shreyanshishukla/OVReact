@@ -1,13 +1,14 @@
-import React, { useState , useEffect} from 'react'
+import React,{useContext} from 'react'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
-import { Link ,useNavigate} from 'react-router-dom';
+import { Button, Form, Input } from 'antd';
+import { AdminContext,Context } from '../../Context';
 import axios from 'axios';
 
 
 
 export default function AddCandidates() {
-    const navigate=useNavigate()
+  const Admin=useContext(AdminContext)
+  const User=useContext(Context)
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
         axios.post('http://localhost:5000/admin/addCandidates', {
@@ -17,12 +18,17 @@ export default function AddCandidates() {
           age:values.age
         })
         .then((response) => {
-
-          console.log(response);
-        
-          navigate('/success')
+         User.setAllFalse();
+         Admin.setAllFalse();
+         Admin.setadminLoggedIn(true)
+         Admin.setCandidateAddedSuccessfully(true)
+          console.log(response)
 
         }, (error) => {
+          User.setAllFalse();
+          Admin.setAllFalse();
+          Admin.setadminLoggedIn(true)
+          Admin.setError(true)
           console.log(error);
         });
 

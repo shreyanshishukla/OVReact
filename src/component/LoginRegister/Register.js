@@ -1,16 +1,37 @@
-import React, { useState , useEffect} from 'react'
+import React, {useContext} from 'react'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { Link ,useNavigate} from 'react-router-dom';
+import  {Context,AdminContext}  from '../../Context'
+
 import axios from 'axios';
 
 
 
-export default function RegisterAdmin() {
+export default function Register() {
+  const User=useContext(Context)
+ const Admin=useContext(AdminContext)
+
+  function handleOnClick()
+  {
+    User.setRegisterUser(false)
+    User.setisLoggedIn(false)
+    Admin.setRegisterAdmin(false)
+    User.setadminLoggin(true)
+    Admin.setadminLoggedIn (false)
+  }
+  function handleOnClickLogin()
+  {
+    User.setRegisterUser(false)
+    User.setisLoggedIn(false)
+    Admin.setRegisterAdmin(false)
+    User.setadminLoggin(false)
+    Admin.setadminLoggedIn (false)
+  }
     const navigate=useNavigate()
     const onFinish = (values) => {
         console.log('Received values of form: ', values);//firstname,lastname,email,password);
-        axios.post('http://localhost:5000/register-admin', {
+        axios.post('http://localhost:5000/register', {
           firstName: values.firstName,
           lastName: values.lastName,
           email:values.email,
@@ -20,7 +41,7 @@ export default function RegisterAdmin() {
 
           console.log(response);
         
-          navigate('/admin-login')
+          navigate('/login')
 
         }, (error) => {
           console.log(error);
@@ -29,7 +50,7 @@ export default function RegisterAdmin() {
       };
   return (
     <>
-    <div>Register Admin User</div>
+    <div>Login</div>
     <Form
       name="normal_login"
       className="login-form"
@@ -75,11 +96,17 @@ export default function RegisterAdmin() {
       </Form.Item>
 
       <Form.Item>
-    
         <Button type="primary" htmlType="submit" className="login-form-button">
-          Register
+         Register
         </Button>
-        Or <Link to='/login'>Login  now!</Link>
+        Or   <button  onClick={handleOnClickLogin} >
+          Login
+        </button>
+      </Form.Item>
+      <Form.Item>
+        <button  onClick={handleOnClick} >
+          Click here to Login as Admin
+        </button>
       </Form.Item>
     </Form>
   </>

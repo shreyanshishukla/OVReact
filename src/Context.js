@@ -13,9 +13,25 @@ function UserProvider({children}){
     const [showCandidateProfilePage, setshowCandidateProfilePage] = useState(false);
     const [showVoting, setshowVoting] = useState(true);
     const [adminLoggin, setadminLoggin] = useState(false);
-    const [Admin, setAdmin] = useState({});
+    const [RegisterUser, setRegisterUser] = useState(false);
+    const setAllFalse=()=>{
+        setUser("shreyanshi")
+        setshowVoterProfile(false)
+        setisLoggedIn(false)
+        setshowCandidateDetails(false)
+        setshowVotingPage(false)
+        setshowVoterProfilePage(false)
+        setshowCandidateProfilePage(false)
+        setshowVoting(false)
+        setadminLoggin(false)
+        setRegisterUser(false)
+
+
+
+    }
+    
     return (
-        <Context.Provider value={{Admin,setAdmin,adminLoggin,setadminLoggin,User,setUser,isLoggedIn,setisLoggedIn,showVoting,showVoterProfilePage,showCandidateProfilePage,setshowCandidateProfilePage,setshowVoterProfilePage,setshowVoting,showCandidateDetails,showVotingPage,setshowVotingPage,setshowCandidateDetails,showVoterProfile,setshowVoterProfile}}>
+        <Context.Provider value={{setAllFalse,RegisterUser, setRegisterUser,adminLoggin,setadminLoggin,User,setUser,isLoggedIn,setisLoggedIn,showVoting,showVoterProfilePage,showCandidateProfilePage,setshowCandidateProfilePage,setshowVoterProfilePage,setshowVoting,showCandidateDetails,showVotingPage,setshowVotingPage,setshowCandidateDetails,showVoterProfile,setshowVoterProfile}}>
             {children}
         </Context.Provider>
     )
@@ -24,11 +40,31 @@ function AdminProvider({children}){
    const [AddCandidate, setAddCandidate] = useState(false);
    const [DeclareResult, setDeclareResult] = useState(false);
     const [ShowAnalytics, setShowAnalytics] = useState(false);
+    const [adminLoggedIn, setadminLoggedIn] = useState(false);
+    const [RegisterAdmin, setRegisterAdmin] = useState(false)
+    const [CandidateAddedSuccessfully, setCandidateAddedSuccessfully] = useState(false)
+    const [Error, setError] = useState(false)
+
+    const [Admin, setAdmin] = useState({});
+
+    const setAllFalse=()=>{
+        setAdmin({})
+        setAddCandidate(false)
+        setDeclareResult(false)
+        setShowAnalytics(false)
+        setadminLoggedIn(false)
+        setRegisterAdmin(false)
+        setCandidateAddedSuccessfully(false);
+        setError(false);
+
+        
+
+    }
 
     return (
-        <Context.Provider value={{ShowAnalytics,setShowAnalytics,setDeclareResult,DeclareResult,AddCandidate, setAddCandidate}}>
+        <AdminContext.Provider value={{CandidateAddedSuccessfully, setCandidateAddedSuccessfully,Error, setError,setAllFalse,RegisterAdmin, setRegisterAdmin,Admin,setAdmin,ShowAnalytics,adminLoggedIn,setadminLoggedIn,setShowAnalytics,setDeclareResult,DeclareResult,AddCandidate, setAddCandidate}}>
             {children}
-        </Context.Provider>
+       </AdminContext.Provider>
     )
 }
 export {Context,UserProvider,AdminContext,AdminProvider}

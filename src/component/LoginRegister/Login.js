@@ -1,27 +1,46 @@
-import React, { useState , useEffect} from 'react'
+import React, { useState , useEffect,useContext} from 'react'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
-import { Link ,useNavigate} from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
+import  {Context,AdminContext}  from '../../Context'
 import axios from 'axios';
 
 
 
-export default function Register() {
-    const navigate=useNavigate()
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);//firstname,lastname,email,password);
-        axios.post('http://localhost:5000/register', {
-          firstName: values.firstName,
-          lastName: values.lastName,
-          email:values.email,
-          password:values.password
-        })
-        .then((response) => {
+export default function Login() {
+ 
+ const User=useContext(Context)
+ const Admin=useContext(AdminContext)
 
-          console.log(response);
-        
-          navigate('/login')
-
+  function handleOnClick()
+  {
+    User.setRegisterUser(false)
+    User.setisLoggedIn(false)
+    Admin.setRegisterAdmin(false)
+    User.setadminLoggin(true)
+    Admin.setadminLoggedIn (false)
+  }
+  function handleOnClickRegister()
+  {
+    User.setRegisterUser(true)
+    User.setisLoggedIn(false)
+    Admin.setRegisterAdmin(false)
+    User.setadminLoggin(false)
+    Admin.setadminLoggedIn (false)
+  }
+  const navigate=useNavigate()
+    const onFinish = ({firstName,lastName,email,password}) => {
+     //   console.log('Received values of form: ',    firstName,lastName,email, password);
+        axios.post('http://localhost:5000/login', { firstName, lastName, email, password }) .then((response) => {
+          if(!response.data.token)
+          console.log("invalid pass or user id");
+           else{
+            //@TODO 
+            //authorization
+            User.setUser( {firstName,lastName, email, password})
+            User.setisLoggedIn(true)
+            
+           }
         }, (error) => {
           console.log(error);
         });
@@ -29,6 +48,7 @@ export default function Register() {
       };
   return (
     <>
+    
     <div>Login</div>
     <Form
       name="normal_login"
@@ -75,13 +95,20 @@ export default function Register() {
       </Form.Item>
 
       <Form.Item>
-    
         <Button type="primary" htmlType="submit" className="login-form-button">
-          Register
+          Log in
         </Button>
-        Or <Link to='/login'>Login  now!</Link>
+        Or   <button  onClick={handleOnClickRegister} >
+          Register
+        </button>
+      </Form.Item>
+      <Form.Item>
+        <button  onClick={handleOnClick} >
+          Click here to Login as Admin
+        </button>
       </Form.Item>
     </Form>
+  
   </>
   )
 }
