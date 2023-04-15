@@ -29,7 +29,7 @@ export default function VoterProfilePage() {
          
           <h3>{user.firstName + user.lastName}</h3>
           <span> <p>Age:{user.Age || 34} </p> 
-          <p>  Voted:{"false"}</p><p> Gender:{user.Gender || 'F'}</p></span>
+          <p>  Voted:{User.Voted?"Yes":"NO"}</p><p> Gender:{user.Gender || 'F'}</p></span>
           <p> AdharNumber:{3873477348834}</p>
             
       

@@ -1,10 +1,11 @@
-import React ,{useEffect,useState} from 'react';
+import React ,{useEffect,useState,useContext } from 'react';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import axios from 'axios'
 import Web3 from 'web3';
+import { Context,AdminContext } from '../../Context';
 import './Voting.css'
 import {SimpleStorageAbi} from '../../config.js'
 const Item = styled(Paper)(({ theme }) => ({
@@ -30,7 +31,7 @@ export default function VotingPage() {
     // const nertwork=await web3.eth.net.getNetworkType()
     // console.log("network",nertwork)
   }
-  
+  const User=useContext(Context)
   const [Candidatesdata, setCandidatesdata] = useState([])
   useEffect(() => {
     loadBlockchainData()
@@ -42,7 +43,11 @@ export default function VotingPage() {
   }, [])
   const val=Candidatesdata
   const block=[blockchain]
-  
+  const handleVote=()=>
+  {
+    User.setVoted(true);
+    console.log("Voted")
+  }
   return (
   <>
     <h1>
@@ -64,7 +69,7 @@ export default function VotingPage() {
           <p>  PartyName:{candidate.party}</p><p> Gender:{candidate.Gender}</p></span>
           <p> PartySymbol:{}</p>
             
-          <button className='button-85'> Vote</button>
+          <button className='button-85' onClick={handleVote}> Vote</button>
           </Item>
         </Grid>
     ))    

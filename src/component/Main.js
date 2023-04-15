@@ -9,6 +9,7 @@ import VoterProfilePage from './Voter/VoterProfilePage';
 import backgroundImage from './../bg.png'
 import CandidateProfilePage from './Candidate/CandidateProfilePage';
 import './Main.css'
+import Error from './Error';
 
 
 
@@ -37,7 +38,7 @@ export default function Main() {
   const User=useContext(Context)
   const Admin=useContext(AdminContext)
   const handleVote=()=>
-  {
+  { 
     User.setAllFalse();
     User.setisLoggedIn(true);
     Admin.setAllFalse();
@@ -78,9 +79,11 @@ export default function Main() {
   Show Candidates
  </button>
  </div>
- {User.showVotingPage && <VotingPage/>}
+ {User.showVotingPage && !User.Voted && <VotingPage/>}
+ {User.showVotingPage && User.Voted && <Error/>}
 {User.showCandidateProfilePage && <CandidateProfilePage/>}
 {User.showVoterProfilePage && <VoterProfilePage/>}
+
 
  <FixedBottomNavigation/>
 </Grid>  </Grid>
