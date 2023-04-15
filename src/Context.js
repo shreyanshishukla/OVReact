@@ -5,9 +5,9 @@ import  {createContext, useState} from 'react';
  const AdminContext=createContext();
 function UserProvider({children}){
     const [User, setUser] = useState("Shreyanshi");
-    const [isLoggedIn, setisLoggedIn] = useState(true);
-    const [showVoterProfile, setshowVoterProfile] = useState(true);
-    const [showCandidateDetails, setshowCandidateDetails] = useState(true);
+    const [isLoggedIn, setisLoggedIn] = useState(false);
+    const [showVoterProfile, setshowVoterProfile] = useState(false);
+    const [showCandidateDetails, setshowCandidateDetails] = useState(false);
     const [showVotingPage, setshowVotingPage] = useState(false);
     const [showVoterProfilePage, setshowVoterProfilePage] = useState(false);
     const [showCandidateProfilePage, setshowCandidateProfilePage] = useState(false);
@@ -15,7 +15,7 @@ function UserProvider({children}){
     const [adminLoggin, setadminLoggin] = useState(false);
     const [RegisterUser, setRegisterUser] = useState(false);
     const setAllFalse=()=>{
-        setUser("shreyanshi")
+     //   setUser({firstName:"shreyanshi",lastName:"shukla",email:"sdd",passsword:""})
         setshowVoterProfile(false)
         setisLoggedIn(false)
         setshowCandidateDetails(false)

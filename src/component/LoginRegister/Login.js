@@ -4,7 +4,7 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import { Link,useNavigate } from 'react-router-dom';
 import  {Context,AdminContext}  from '../../Context'
 import axios from 'axios';
-
+import './Css.css'
 
 
 export default function Login() {
@@ -48,8 +48,13 @@ export default function Login() {
       };
   return (
     <>
+    <div className='Absolute-Center' >
+    <header>
+      <h2>Login</h2>
+    </header></div>
+    <div className='Absolute-Center' >
     
-    <div>Login</div>
+    
     <Form
       name="normal_login"
       className="login-form"
@@ -93,21 +98,23 @@ export default function Login() {
           Forgot password
         </a>
       </Form.Item>
-
+  <div className='center-b'>
       <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button">
+        <Button type="primary" htmlType="submit" className="button-17">
           Log in
         </Button>
-        Or   <button  onClick={handleOnClickRegister} >
+    <h3>OR</h3>       <button  className='button-17' onClick={handleOnClickRegister} >
           Register
         </button>
       </Form.Item>
+      </div>
       <Form.Item>
-        <button  onClick={handleOnClick} >
+        <button className='button-30' onClick={handleOnClick} >
           Click here to Login as Admin
         </button>
       </Form.Item>
     </Form>
+    </div>
   
   </>
   )

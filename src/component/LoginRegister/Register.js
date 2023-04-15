@@ -3,7 +3,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { Link ,useNavigate} from 'react-router-dom';
 import  {Context,AdminContext}  from '../../Context'
-
+import './Css.css'
 import axios from 'axios';
 
 
@@ -41,7 +41,7 @@ export default function Register() {
 
           console.log(response);
         
-          navigate('/login')
+  
 
         }, (error) => {
           console.log(error);
@@ -50,7 +50,11 @@ export default function Register() {
       };
   return (
     <>
-    <div>Login</div>
+ <div className='Absolute-Center' >
+    <header>
+      <h2>Register</h2>
+    </header></div>
+    <div className='Absolute-Center' >
     <Form
       name="normal_login"
       className="login-form"
@@ -94,21 +98,23 @@ export default function Register() {
           Forgot password
         </a>
       </Form.Item>
-
+      <div className='center-b'>
       <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button">
+        <Button type="primary" htmlType="submit" className="button-17">
          Register
         </Button>
-        Or   <button  onClick={handleOnClickLogin} >
+        Or   <button  className="button-17" onClick={handleOnClickLogin} >
           Login
         </button>
       </Form.Item>
+      </div>
       <Form.Item>
-        <button  onClick={handleOnClick} >
+        <button  onClick={handleOnClick} className="button-30">
           Click here to Login as Admin
         </button>
       </Form.Item>
     </Form>
+    </div>
   </>
   )
 }

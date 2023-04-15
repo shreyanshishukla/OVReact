@@ -42,9 +42,9 @@ export default function AdminPortal() {
       
      <ResponsiveAppBar/>
      <div style={{margin:"5vh"}}>
-     {!Admin.AddCandidate && <button onClick={handleaddCandidate}>Add a candidate</button>}
-      {!Admin.DeclareResult && <button onClick={handleDeclareResults}>Declare Results</button>}
-      {!Admin.ShowAnalytics &&<button onClick={handldeAnalytics}>Display analytics</button>}
+     {!Admin.AddCandidate && <button onClick={handleaddCandidate} className='button-1'>Add a candidate</button>}
+      {!Admin.DeclareResult && <button onClick={handleDeclareResults} className='button-1'>Declare Results</button>}
+      {!Admin.ShowAnalytics &&<button onClick={handldeAnalytics} className='button-1'>Display analytics</button>}
       {Admin.AddCandidate && <AddCandidates/>}
       {Admin.DeclareResult && <Result/>}
       {Admin.ShowAnalytics && <Analytics/>}

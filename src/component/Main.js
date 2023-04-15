@@ -8,6 +8,7 @@ import VotingPage from './Voting/VotingPage';
 import VoterProfilePage from './Voter/VoterProfilePage';
 import backgroundImage from './../bg.png'
 import CandidateProfilePage from './Candidate/CandidateProfilePage';
+import './Main.css'
 
 
 
@@ -59,20 +60,21 @@ export default function Main() {
   console.log("Main",User)
     return (
         <>
+        <div className='full-height'>
         
-       <Grid container  style={{backgroundColor:"#C9CCD5"}}   > 
+       <Grid container     > 
       <Grid item xs={12}>
-<ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
 <ResponsiveAppBar elevation={20}/>
-
+</ThemeProvider>
 <div>
-<button onClick={handleVote}>
+<button onClick={handleVote} className='button-1'>
   Vote
 </button>
- <button onClick={handleVoterProfile}>
+ <button onClick={handleVoterProfile} className='button-1'>
   Voter Profile
  </button>
- <button onClick={handleCandidate}>
+ <button onClick={handleCandidate} className='button-1'>
   Show Candidates
  </button>
  </div>
@@ -81,8 +83,8 @@ export default function Main() {
 {User.showVoterProfilePage && <VoterProfilePage/>}
 
  <FixedBottomNavigation/>
- </ThemeProvider></Grid>  </Grid>
-
+</Grid>  </Grid>
+</div>
 
       </>
       );

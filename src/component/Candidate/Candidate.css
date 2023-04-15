@@ -1,0 +1,14 @@
+.box-shadow
+{ box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);}
+.Absolute-Center {
+
+    display: flex; 
+  
+    align-items: center;
+  
+    justify-content: center;
+  
+    text-align: center; 
+  
+  }  
+  
