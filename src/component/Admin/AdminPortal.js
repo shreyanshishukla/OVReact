@@ -6,6 +6,7 @@ import { Analytics } from '@mui/icons-material';
 import ResponsiveAppBar from '../../material-ui/ResponsiveAppBar'
 import Success from './Success';
 import Error from './Error';
+import Results from './Results'
 
 
 export default function AdminPortal() {
@@ -46,7 +47,7 @@ export default function AdminPortal() {
       {!Admin.DeclareResult && <button onClick={handleDeclareResults} className='button-1'>Declare Results</button>}
       {!Admin.ShowAnalytics &&<button onClick={handldeAnalytics} className='button-1'>Display analytics</button>}
       {Admin.AddCandidate && <AddCandidates/>}
-      {Admin.DeclareResult && <Result/>}
+      {Admin.DeclareResult && <Results/>}
       {Admin.ShowAnalytics && <Analytics/>}
       {Admin.Error && <Error/>}
       {Admin.CandidateAddedSuccessfully && <Success/>}

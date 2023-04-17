@@ -31,6 +31,7 @@ export default function VotingPage() {
     // const nertwork=await web3.eth.net.getNetworkType()
     // console.log("network",nertwork)
   }
+  const Admin=useContext(AdminContext)
   const User=useContext(Context)
   const [Candidatesdata, setCandidatesdata] = useState([])
   useEffect(() => {
@@ -43,10 +44,29 @@ export default function VotingPage() {
   }, [])
   const val=Candidatesdata
   const block=[blockchain]
-  const handleVote=()=>
+  let candarray=[]
+  let vote=[]
+
+  const handleVote=(index)=>
   {
-    User.setVoted(true);
-    console.log("Voted")
+    axios.post('http://localhost:5000/voting', {
+         index
+        })
+        .then((response) => {
+         User.setAllFalse();
+         Admin.setAllFalse();
+         User.setisLoggedIn(true)
+         User.setshowVotingPage(true)
+        User.setVoted(true)
+          
+
+        }, (error) => {
+          User.setAllFalse();
+          Admin.setAllFalse();
+          User.setisLoggedIn(true);
+          console.log(error);
+        });
+   
   }
   return (
   <>
@@ -60,7 +80,13 @@ export default function VotingPage() {
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} className='Absolute-Center'>
       {
         
-         val.map((candidate)=>(
+         val.map((candidate,index)=>{ candarray.push({
+            ...candidate,
+            vote:0
+          })
+          vote.push(0);
+          return(
+         
       <Grid xs={9} key={candidate._id} >
           <Item className='box-shadow'>
          
@@ -69,11 +95,11 @@ export default function VotingPage() {
           <p>  PartyName:{candidate.party}</p><p> Gender:{candidate.Gender}</p></span>
           <p> PartySymbol:{}</p>
             
-          <button className='button-85' onClick={handleVote}> Vote</button>
+          <button className='button-85'  onClick={()=>handleVote(index)}> Vote</button>
           </Item>
         </Grid>
-    ))    
-    }
+    )}) }   
+    
      
       </Grid>
     </Box>
