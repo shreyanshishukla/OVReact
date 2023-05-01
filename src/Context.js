@@ -49,6 +49,7 @@ function AdminProvider({children}){
     const [CandidateAddedSuccessfully, setCandidateAddedSuccessfully] = useState(false)
     const [AdminOTP, setAdminOTP] = useState(false)
     const [Error, setError] = useState(false)
+    const [DeleteCandidate, setDeleteCandidate] = useState(false)
 
     const [Admin, setAdmin] = useState({});
 
@@ -62,14 +63,15 @@ function AdminProvider({children}){
         setCandidateAddedSuccessfully(false);
         setError(false);
         setAdminOTP(false);
-        setAdminOTP(false)
+        setAdminOTP(false);
+        setDeleteCandidate(false)
 
         
 
     }
 
     return (
-        <AdminContext.Provider value={{CandidateAddedSuccessfully,setAdminOTP,AdminOTP, setCandidateAddedSuccessfully,Error, setError,setAllFalse,RegisterAdmin, setRegisterAdmin,Admin,setAdmin,ShowAnalytics,adminLoggedIn,setadminLoggedIn,setShowAnalytics,setDeclareResult,DeclareResult,AddCandidate, setAddCandidate}}>
+        <AdminContext.Provider value={{DeleteCandidate,setDeleteCandidate,CandidateAddedSuccessfully,setAdminOTP,AdminOTP, setCandidateAddedSuccessfully,Error, setError,setAllFalse,RegisterAdmin, setRegisterAdmin,Admin,setAdmin,ShowAnalytics,adminLoggedIn,setadminLoggedIn,setShowAnalytics,setDeclareResult,DeclareResult,AddCandidate, setAddCandidate}}>
             {children}
        </AdminContext.Provider>
     )

@@ -1,27 +1,42 @@
-import React,{useContext} from 'react'
+import React,{useContext,useState} from 'react'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
 import { AdminContext,Context } from '../../Context';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 
 
 export default function AddCandidates() {
   const Admin=useContext(AdminContext)
   const User=useContext(Context)
+  const [alreadyexits, setalreadyexits] = useState(false)
+  useEffect(() => {
+    setalreadyexits(false)
+
+  }, [])
+  
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
         axios.post('http://localhost:5000/admin/addCandidates', {
           firstName: values.firstName,
           lastName: values.lastName,
           party:values.party,
-          age:values.age
+          age:values.age,
+          gender:values.gender
         })
         .then((response) => {
-         User.setAllFalse();
-         Admin.setAllFalse();
-         Admin.setadminLoggedIn(true)
-         Admin.setCandidateAddedSuccessfully(true)
+          if(response.data!='failure')
+          {
+            User.setAllFalse();
+            Admin.setAllFalse();
+            Admin.setadminLoggedIn(true)
+            Admin.setCandidateAddedSuccessfully(true)
+          }
+          else{
+              setalreadyexits(true)
+          }
+
           console.log(response)
 
         }, (error) => {
@@ -35,7 +50,7 @@ export default function AddCandidates() {
       };
   return (
     <>
-    <div>Add candidates!</div>
+    <div className="Add">Add candidates!</div>
     <Form
       name="normal_login"
       className="login-form"
@@ -69,6 +84,20 @@ export default function AddCandidates() {
           placeholder="age"
         />
       </Form.Item>
+      <Form.Item
+        name="gender"
+        rules={[{ required: true, message: 'Gender !' }]}
+      >
+        <Input
+          prefix={<LockOutlined className="site-form-item-icon" />}
+         
+          placeholder="gender"
+        />
+      </Form.Item>
+      <div>{alreadyexits && <div class="failure-msg">
+  <i class="fa fa-check"></i>
+  Candidate Already exists 
+</div>}</div>
 
       <Form.Item>
     

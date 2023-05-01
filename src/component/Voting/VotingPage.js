@@ -8,6 +8,10 @@ import Web3 from 'web3';
 import { Context,AdminContext } from '../../Context';
 import './Voting.css'
 import {SimpleStorageAbi} from '../../config.js'
+import bjp from '../../Images/bjp.png'
+import congress from '../../Images/congress.jpg'
+import LDP from '../../Images/LDP.webp'
+import SP from '../../Images/samajwadi party.png'
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#624F5',
   ...theme.typography.body2,
@@ -70,13 +74,12 @@ export default function VotingPage() {
   }
   return (
   <>
-    <h1>
+    <h1 className='text'>
       Please Click on the Vote Button in front of the candidate to vote the candidate.
-     
+      You can only vote once !!
     </h1>
     <div>{console.log("blockchain",blockchain)}</div>
     <Box sx={{ width: '100%',marginTop:"5vh" }}>
-      <h3>Candidates :</h3>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} className='Absolute-Center'>
       {
         
@@ -87,13 +90,23 @@ export default function VotingPage() {
           vote.push(0);
           return(
          
-      <Grid xs={9} key={candidate._id} >
+      <Grid xs={4} key={candidate._id} >
           <Item className='box-shadow'>
          
-          <h3>{candidate.firstName + candidate.lastName}</h3>
-          <span> <p>Age:{candidate.Age} </p> 
-          <p>  PartyName:{candidate.party}</p><p> Gender:{candidate.Gender}</p></span>
-          <p> PartySymbol:{}</p>
+          
+          <div className='mainnn'>
+         <div className="info"> {candidate.firstName + candidate.lastName}
+          <p>Age:{candidate.Age}</p>
+          <p>  PartyName:{candidate.party}</p>
+          <p> Gender:{candidate.Gender}
+             </p>
+          </div> 
+          <div   className='party'> <div><div>PartySymbol: </div>{ 
+            (candidate.party.toLowerCase()=='bjp') &&<img src={bjp} className='partylogo' />}
+            {(candidate.party.toLowerCase()=='ldp') &&<img src={LDP} className='partylogo' />}
+            {(candidate.party.toLowerCase()=='samajwadi party') &&<img src={SP} className='partylogo' />}
+            {(candidate.party.toLowerCase()=='congress') &&<img src={congress} className='partylogo' /> } </div></div>
+          </div>
             
           <button className='button-85'  onClick={()=>handleVote(index)}> Vote</button>
           </Item>

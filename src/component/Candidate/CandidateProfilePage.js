@@ -5,6 +5,10 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import axios from 'axios'
 import './Candidate.css'
+import bjp from '../../Images/bjp.png'
+import congress from '../../Images/congress.jpg'
+import LDP from '../../Images/LDP.webp'
+import SP from '../../Images/samajwadi party.png'
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#A6A9C8',
   ...theme.typography.body2,
@@ -34,28 +38,29 @@ export default function CandidateProfilePage() {
     
     
     <>
-      <Box sx={{ width: '100%',marginTop:"5vh" }} >
-      <h3>Election Candidates :</h3>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} className='Absolute-Center'>
-      {
+    <div className='base'>
+      Election Candidates :
+     <div className='tmain'>
         
-         val.map((candidate)=>(
-      <Grid xs={9} key={candidate._id} >
-          <Item className='box-shadow'>
-          <h3>{candidate.firstName + candidate.lastName}</h3>
+         {val.map((candidate)=>(
+     
+          
+          <div className='mainnn'>
+         <div className="info"> {candidate.firstName + candidate.lastName}
           <p>Age:{candidate.Age}</p>
           <p>  PartyName:{candidate.party}</p>
-          <p> PartySymbol:{}</p>
-            <p> Gender:{candidate.Gender}
+          <p> Gender:{candidate.Gender}
              </p>
-          
-          </Item>
-        </Grid>
-    ))    
-    }
+          </div> 
+          <div   className='party'> <div><div>PartySymbol: </div>{ 
+            (candidate.party.toLowerCase()=='bjp') &&<img src={bjp} className='partylogo' />}
+            {(candidate.party.toLowerCase()=='ldp') &&<img src={LDP} className='partylogo' />}
+            {(candidate.party.toLowerCase()=='samajwadi party') &&<img src={SP} className='partylogo' />}
+            {(candidate.party.toLowerCase()=='congress') &&<img src={congress} className='partylogo' /> } </div></div>
+          </div>))}
+          </div>
      
-      </Grid>
-    </Box>
+    </div>
     </>
 
   )

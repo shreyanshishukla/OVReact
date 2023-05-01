@@ -1,12 +1,12 @@
 import React ,{useContext} from 'react'
 import { AdminContext,Context } from '../../Context';
 import AddCandidates from './AddCandidate';
-import { Result } from 'antd';
-import { Analytics } from '@mui/icons-material';
 import ResponsiveAppBar from '../../material-ui/ResponsiveAppBar'
 import Success from './Success';
 import Error from './Error';
 import Results from './Results'
+import Analytics from './Analytics'
+import Delete from './Delete';
 
 
 export default function AdminPortal() {
@@ -37,6 +37,12 @@ export default function AdminPortal() {
       Admin.setShowAnalytics(true)
 
     }
+    const handleDeleteCandidate=()=>{
+      Admin.setAllFalse();
+      User.setAllFalse();
+      Admin.setadminLoggedIn(true)
+      Admin.setDeleteCandidate(true)
+    }
 
   return (
   <>
@@ -46,11 +52,17 @@ export default function AdminPortal() {
      {!Admin.AddCandidate && <button onClick={handleaddCandidate} className='button-1'>Add a candidate</button>}
       {!Admin.DeclareResult && <button onClick={handleDeclareResults} className='button-1'>Declare Results</button>}
       {!Admin.ShowAnalytics &&<button onClick={handldeAnalytics} className='button-1'>Display analytics</button>}
+      {!Admin.DeleteCandidate &&<button onClick={handleDeleteCandidate} className='button-1'>Delete a candidate</button>}
       {Admin.AddCandidate && <AddCandidates/>}
       {Admin.DeclareResult && <Results/>}
       {Admin.ShowAnalytics && <Analytics/>}
       {Admin.Error && <Error/>}
       {Admin.CandidateAddedSuccessfully && <Success/>}
+      {Admin.DeleteCandidate && <Delete/>}
+
+      
+
+
       </div>
   </>
   )

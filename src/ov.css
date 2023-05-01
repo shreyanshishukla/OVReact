@@ -12,11 +12,6 @@
   position: relative;
 }
 
-.background {
-  background-image: url('./bg.pn');
-  width: 200px;
-  height: 200px;
-}
 .background span{
 position: absolute;
     z-index: 1;
