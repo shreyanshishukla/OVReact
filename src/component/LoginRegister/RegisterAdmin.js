@@ -1,4 +1,4 @@
-import React, { useContext,useState} from 'react'
+import React, { useContext,useEffect,useState} from 'react'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { Link ,useNavigate} from 'react-router-dom';
@@ -16,7 +16,22 @@ export default function RegisterAdmin() {
  const [OTP, setOTP] = useState()
  const [adhar, setadhar] = useState()
  const [wrongOTP, setwrongOTP] = useState(false)
+ const [alreadyexits, setalreadyexits] = useState(false)
  const [verificationDone, setverificationDone] = useState(false)
+ const [wrongadhar, setwrongadhar] = useState(false)
+ useEffect(() => {
+   setadhar('')
+   setOTP('')
+   setwrongOTP(false)
+   setalreadyexits(false)
+   setverificationDone(false)
+   setwrongadhar(false)
+  User.setUserOTP(false)
+
+ 
+   
+ }, [])
+ 
 
  function handleadharonchange(event)
  {
@@ -35,12 +50,18 @@ export default function RegisterAdmin() {
       
       })
       .then((response) => {
-
-        console.log(response);
-
-        var btnReg=document.getElementById('Register')
-        btnReg.disabled=false;
-        setverificationDone(true)
+      if(response.data=='Verified')
+        
+        {   var btnReg=document.getElementById('Register')
+           btnReg.disabled=false;
+           setverificationDone(true)}
+          else
+          {
+           setwrongOTP(true)
+           setverificationDone(false);
+   
+          }
+         
        
 
         
@@ -63,9 +84,15 @@ export default function RegisterAdmin() {
   .then((response) => {
 
     console.log(response);
-    
-      User.setUserOTP(true)
-    
+
+  
+      if(response.data=="SubmitOtp")
+      {   User.setUserOTP(true)}
+        else
+        {
+        setwrongadhar(true)
+ 
+        }
 
   }, (error) => {
     console.log(error);
@@ -102,8 +129,31 @@ export default function RegisterAdmin() {
         .then((response) => {
 
           console.log(response);
-        
-          navigate('/admin-login')
+          
+          if(response.data=='already exits')
+          {  
+           
+          setOTP('');
+          setadhar('');
+          setwrongOTP(false);
+          setverificationDone(false);
+          setalreadyexits(true)
+          User.setUserOTP(false)
+          var btnReg=document.getElementById('Register')
+          btnReg.disabled=true;
+          
+
+          }
+          else{
+            User.setAllFalse();
+          Admin.setAllFalse();
+          setOTP('');
+          setadhar('');
+          setwrongOTP(false);
+          setverificationDone(false);
+          User.setadminLoggin(true)
+
+          }
 
         }, (error) => {
           console.log(error);
@@ -115,8 +165,10 @@ export default function RegisterAdmin() {
     <div className='Absolute-Center' >
     <header>
       <h2>Register Admin </h2>
-    </header></div>
+    </header>
+</div>
     <div className='Absolute-Center' >
+   
     <Form
       name="normal_login"
       className="login-form"
@@ -191,6 +243,14 @@ export default function RegisterAdmin() {
   <i class="fa fa-check"></i>
   Wrong OTP.Try Again
 </div>}
+<div>{alreadyexits && <div class="failure-msg">
+  <i class="fa fa-check"></i>
+  Already exits 
+</div>
+}{wrongadhar && <div class="failure-msg">
+  <i class="fa fa-check"></i>
+  Wrong Adhaar 
+</div>}</div>
       <Form.Item>
         <Form.Item name="remember" valuePropName="checked" noStyle>
           <Checkbox>Remember me</Checkbox>

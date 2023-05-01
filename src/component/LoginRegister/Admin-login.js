@@ -16,6 +16,21 @@ export default function Adminlogin() {
  const [adhar, setadhar] = useState()
  const [wrongOTP, setwrongOTP] = useState(false)
  const [verificationDone, setverificationDone] = useState(false)
+ const [alreadyexits, setalreadyexits] = useState(false)
+ const [wrongadhar, setwrongadhar] = useState(false)
+
+ useEffect(() => {
+  setadhar('')
+  setOTP('')
+  setwrongOTP(false)
+  setalreadyexits(false)
+  setverificationDone(false)
+  setwrongadhar(false)
+  Admin.setAdminOTP(false)
+
+
+  
+}, [])
 
  function handleadharonchange(event)
  {
@@ -37,9 +52,19 @@ export default function Adminlogin() {
 
         console.log(response);
 
-        var btnReg=document.getElementById('Register')
-        btnReg.disabled=false;
-        setverificationDone(true)
+      
+        if(response.data=='Verified')
+
+        {   var btnReg=document.getElementById('Register')
+           btnReg.disabled=false;
+           setverificationDone(true)}
+          else
+          {
+           setwrongOTP(true)
+           setverificationDone(false);
+          
+   
+          }
 
       }, (error) => {
 
@@ -75,7 +100,15 @@ export default function Adminlogin() {
 
         console.log(response);
         
-          User.setUserOTP(true)
+       
+     
+        if(response.data=="SubmitOtp")
+          {     Admin.setAdminOTP(true)}
+            else
+            {
+            setwrongadhar(true)
+     
+            }
         
 
       }, (error) => {
@@ -129,14 +162,32 @@ export default function Adminlogin() {
             password,
             adhaar_number
             })
-    User.setshowVotingPage(false);
-    User.setshowCandidateDetails(false);
-    User.setshowVoterProfile(false);
-    User.setshowVoting(false);
-    User.setshowVoterProfilePage(false);
-    User.setshowCandidateProfilePage(false);
-    User.setadminLoggin(false)
-    Admin.setadminLoggedIn(true)
+            if(response.data=='already exits')
+            {  
+             
+            setOTP('');
+            setadhar('');
+            setwrongOTP(false);
+            setverificationDone(false);
+            setalreadyexits(true)
+            User.setUserOTP(false)
+            var btnReg=document.getElementById('Register')
+            btnReg.disabled=true;
+            
+  
+            }
+            else{
+              User.setAllFalse();
+            Admin.setAllFalse();
+            setOTP('');
+            setadhar('');
+            setwrongOTP(false);
+            setverificationDone(false);
+            Admin.setadminLoggedIn(true)
+            }  
+        
+       
+    
 
             
            }
@@ -150,7 +201,8 @@ export default function Adminlogin() {
  <div className='Absolute-Center' >
     <header>
       <h2>Login</h2>
-    </header></div>
+    </header>
+    </div>
     <div className='Absolute-Center' >
     <Form
       name="normal_login"
@@ -191,14 +243,14 @@ export default function Adminlogin() {
           placeholder="password"
         />
           
-          { !User.UserOTP && !verificationDone && <Form.Item> 
+          { !Admin.AdminOTP && !verificationDone && <Form.Item> 
         <Button type="primary" onClick={handlegetOTP} className="button-17" >
          GetOTP
         </Button>
       </Form.Item>}
       {/* OTP logic */}
         
-     {User.UserOTP && !verificationDone && <> <Form.Item
+     {Admin.AdminOTP && !verificationDone && <> <Form.Item
         name="OTP"
         rules={[{ required: true, message: 'Please input your OTP!' }]}
       >
@@ -224,6 +276,14 @@ export default function Adminlogin() {
   <i class="fa fa-check"></i>
   Wrong OTP.Try Again
 </div>}
+  <div>{alreadyexits && <div class="failure-msg">
+  <i class="fa fa-check"></i>
+  Already exits 
+</div>}
+{wrongadhar && <div class="failure-msg">
+  <i class="fa fa-check"></i>
+  Wrong Adhar
+</div>}</div>
       </Form.Item>
       <div className='center-b'>
       <Form.Item>

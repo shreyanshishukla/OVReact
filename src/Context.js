@@ -31,6 +31,7 @@ function UserProvider({children}){
 
 
 
+
     }
     
     return (
@@ -61,6 +62,7 @@ function AdminProvider({children}){
         setCandidateAddedSuccessfully(false);
         setError(false);
         setAdminOTP(false);
+        setAdminOTP(false)
 
         
 

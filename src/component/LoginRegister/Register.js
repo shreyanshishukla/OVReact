@@ -1,4 +1,4 @@
-import React, {useContext ,useState} from 'react'
+import React, {useContext ,useState,useEffect} from 'react'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { Link ,useNavigate} from 'react-router-dom';
@@ -14,6 +14,22 @@ export default function Register() {
  const [OTP, setOTP] = useState()
  const [adhar, setadhar] = useState()
  const [wrongOTP, setwrongOTP] = useState(false)
+ const [alreadyexits, setalreadyexits] = useState(false)
+ const [wrongadhar, setwrongadhar] = useState(false)
+ useEffect(() => {
+  setadhar('')
+  setOTP('')
+  User.setUserOTP(false)
+
+  setwrongOTP(false)
+  setalreadyexits(false)
+  setverificationDone(false)
+  setwrongadhar(false)
+
+  
+}, [])
+
+
  const [verificationDone, setverificationDone] = useState(false)
 
  function handleadharonchange(event)
@@ -35,12 +51,17 @@ export default function Register() {
       .then((response) => {
 
         console.log(response);
-
-        var btnReg=document.getElementById('Register')
+      if(response.data=='Verified')
+     {   var btnReg=document.getElementById('Register')
         btnReg.disabled=false;
-        setverificationDone(true)
-       
+        setverificationDone(true)}
+       else
+       {
+        setwrongOTP(true)
+        setverificationDone(false);
 
+       }
+      
         
          
         
@@ -77,9 +98,16 @@ export default function Register() {
       })
       .then((response) => {
 
-        console.log(response);
+        console.log(response.data);
         
-          User.setUserOTP(true)
+       
+        if(response.data=="SubmitOtp")
+          {   User.setUserOTP(true)}
+            else
+            {
+            setwrongadhar(true)
+     
+            }
         
 
       }, (error) => {
@@ -99,7 +127,32 @@ export default function Register() {
         .then((response) => {
 
           console.log(response);
-           User.setUserOTP(true);
+           
+       
+          if(response.data=='already exits')
+          {  
+           
+          setOTP('');
+          setadhar('');
+          setwrongOTP(false);
+          setverificationDone(false);
+          setalreadyexits(true)
+          User.setUserOTP(false)
+          var btnReg=document.getElementById('Register')
+          btnReg.disabled=true;
+          
+
+          }
+          else{
+            User.setAllFalse();
+          Admin.setAllFalse();
+          setOTP('');
+          setadhar('');
+          setwrongOTP(false);
+          setverificationDone(false);
+
+
+          }
           
 
         }, (error) => {
@@ -112,7 +165,8 @@ export default function Register() {
  <div className='Absolute-Center' >
     <header>
       <h2>Register</h2>
-    </header></div>
+    </header> 
+     </div>
     <div className='Absolute-Center' >
     <Form
       name="normal_login"
@@ -188,6 +242,14 @@ export default function Register() {
   <i class="fa fa-check"></i>
   Wrong OTP.Try Again
 </div>}
+<div>{alreadyexits && <div class="failure-msg">
+  <i class="fa fa-check"></i>
+  Already exits 
+</div>
+}{wrongadhar && <div class="failure-msg">
+  <i class="fa fa-check"></i>
+  Wrong Adhaar 
+</div>}</div>
         {/* OTP logic ends */}
       <Form.Item>
         <Form.Item name="remember" valuePropName="checked" noStyle>

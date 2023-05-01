@@ -15,7 +15,21 @@ export default function Login() {
  const [adhar, setadhar] = useState()
  const [wrongOTP, setwrongOTP] = useState(false)
  const [verificationDone, setverificationDone] = useState(false)
+ const [alreadyexits, setalreadyexits] = useState(false)
+ const [wrongadhar, setwrongadhar] = useState(false)
 
+
+ useEffect(() => {
+  setadhar('')
+  setOTP('')
+  setwrongOTP(false)
+  setalreadyexits(false)
+  setverificationDone(false)
+  setwrongadhar(false)
+  User.setUserOTP(false)
+
+  
+}, [])
  function handleadharonchange(event)
  {
   setadhar(event.target.value)
@@ -36,9 +50,17 @@ export default function Login() {
 
         console.log(response);
 
-        var btnReg=document.getElementById('Register')
-        btnReg.disabled=false;
-        setverificationDone(true)
+        if(response.data=='Verified')
+
+        {   var btnReg=document.getElementById('Register')
+           btnReg.disabled=false;
+           setverificationDone(true)}
+          else
+          {
+           setwrongOTP(true)
+           setverificationDone(false);
+   
+          }
 
       }, (error) => {
 
@@ -74,7 +96,14 @@ export default function Login() {
 
         console.log(response);
         
-          User.setUserOTP(true)
+      
+        if(response.data=="SubmitOtp")
+        {   User.setUserOTP(true)}
+          else
+          {
+          setwrongadhar(true)
+   
+          }
         
 
       }, (error) => {
@@ -110,7 +139,31 @@ export default function Login() {
             //@TODO 
             //authorization
             User.setUser( {firstName,lastName, email, password,adhaar_number})
+  
+            if(response.data=='already exits')
+            {  
+             
+            setOTP('');
+            setadhar('');
+            setwrongOTP(false);
+            setverificationDone(false);
+            setalreadyexits(true)
+            User.setUserOTP(false)
+            var btnReg=document.getElementById('Register')
+            btnReg.disabled=true;
+            
+  
+            }
+            else{
+              User.setAllFalse();
+            Admin.setAllFalse();
+            setOTP('');
+            setadhar('');
+            setwrongOTP(false);
+            setverificationDone(false);
             User.setisLoggedIn(true)
+
+            }  
             
            }
         }, (error) => {
@@ -123,7 +176,8 @@ export default function Login() {
     <div className='Absolute-Center' >
     <header>
       <h2>Login</h2>
-    </header></div>
+    </header>
+    </div>
     <div className='Absolute-Center' >
     
     
@@ -201,6 +255,14 @@ export default function Login() {
   <i class="fa fa-check"></i>
   Wrong OTP.Try Again
 </div>}
+<div>{alreadyexits && <div class="failure-msg">
+  <i class="fa fa-check"></i>
+  Already exits 
+</div>
+}{wrongadhar && <div class="failure-msg">
+  <i class="fa fa-check"></i>
+  Wrong Adhaar 
+</div>}</div>
       <Form.Item>
         <Form.Item name="remember" valuePropName="checked" noStyle>
           <Checkbox>Remember me</Checkbox>
