@@ -76,7 +76,7 @@ export default function VotingPage() {
     </h1>
     <div>{console.log("blockchain",blockchain)}</div>
     <Box sx={{ width: '100%',marginTop:"5vh" }}>
-      <h3>Election Candidates :</h3>
+      <h3>Candidates :</h3>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} className='Absolute-Center'>
       {
         

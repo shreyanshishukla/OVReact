@@ -15,6 +15,7 @@ function UserProvider({children}){
     const [adminLoggin, setadminLoggin] = useState(false);
     const[Voted,setVoted]=useState(false);
     const [RegisterUser, setRegisterUser] = useState(false);
+    const [UserOTP, setUserOTP] = useState(false)
     const setAllFalse=()=>{
      //   setUser({firstName:"shreyanshi",lastName:"shukla",email:"sdd",passsword:""})
         setshowVoterProfile(false)
@@ -26,13 +27,14 @@ function UserProvider({children}){
         setshowVoting(false)
         setadminLoggin(false)
         setRegisterUser(false)
+        setUserOTP(false);
 
 
 
     }
     
     return (
-        <Context.Provider value={{Voted,setVoted,setAllFalse,RegisterUser, setRegisterUser,adminLoggin,setadminLoggin,User,setUser,isLoggedIn,setisLoggedIn,showVoting,showVoterProfilePage,showCandidateProfilePage,setshowCandidateProfilePage,setshowVoterProfilePage,setshowVoting,showCandidateDetails,showVotingPage,setshowVotingPage,setshowCandidateDetails,showVoterProfile,setshowVoterProfile}}>
+        <Context.Provider value={{Voted,UserOTP,setUserOTP,setVoted,setAllFalse,RegisterUser, setRegisterUser,adminLoggin,setadminLoggin,User,setUser,isLoggedIn,setisLoggedIn,showVoting,showVoterProfilePage,showCandidateProfilePage,setshowCandidateProfilePage,setshowVoterProfilePage,setshowVoting,showCandidateDetails,showVotingPage,setshowVotingPage,setshowCandidateDetails,showVoterProfile,setshowVoterProfile}}>
             {children}
         </Context.Provider>
     )
@@ -44,6 +46,7 @@ function AdminProvider({children}){
     const [adminLoggedIn, setadminLoggedIn] = useState(false);
     const [RegisterAdmin, setRegisterAdmin] = useState(false)
     const [CandidateAddedSuccessfully, setCandidateAddedSuccessfully] = useState(false)
+    const [AdminOTP, setAdminOTP] = useState(false)
     const [Error, setError] = useState(false)
 
     const [Admin, setAdmin] = useState({});
@@ -57,13 +60,14 @@ function AdminProvider({children}){
         setRegisterAdmin(false)
         setCandidateAddedSuccessfully(false);
         setError(false);
+        setAdminOTP(false);
 
         
 
     }
 
     return (
-        <AdminContext.Provider value={{CandidateAddedSuccessfully, setCandidateAddedSuccessfully,Error, setError,setAllFalse,RegisterAdmin, setRegisterAdmin,Admin,setAdmin,ShowAnalytics,adminLoggedIn,setadminLoggedIn,setShowAnalytics,setDeclareResult,DeclareResult,AddCandidate, setAddCandidate}}>
+        <AdminContext.Provider value={{CandidateAddedSuccessfully,setAdminOTP,AdminOTP, setCandidateAddedSuccessfully,Error, setError,setAllFalse,RegisterAdmin, setRegisterAdmin,Admin,setAdmin,ShowAnalytics,adminLoggedIn,setadminLoggedIn,setShowAnalytics,setDeclareResult,DeclareResult,AddCandidate, setAddCandidate}}>
             {children}
        </AdminContext.Provider>
     )

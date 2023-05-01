@@ -12,6 +12,78 @@ export default function Adminlogin() {
  
   const User=useContext(Context)
  const Admin=useContext(AdminContext)
+ const [OTP, setOTP] = useState()
+ const [adhar, setadhar] = useState()
+ const [wrongOTP, setwrongOTP] = useState(false)
+ const [verificationDone, setverificationDone] = useState(false)
+
+ function handleadharonchange(event)
+ {
+  setadhar(event.target.value)
+ }
+ function handleOTP(event)
+ {
+  setOTP(event.target.value)
+ }
+ function handleVerifyOTP()
+ {
+  axios.post('http://localhost:5000/verifyOTP', {
+        
+        adhaar_number:adhar,
+        OTP
+      
+      })
+      .then((response) => {
+
+        console.log(response);
+
+        var btnReg=document.getElementById('Register')
+        btnReg.disabled=false;
+        setverificationDone(true)
+
+      }, (error) => {
+
+        setwrongOTP(true)
+        console.log(error);
+      });
+
+ }
+  function handleOnClick()
+  {
+    User.setRegisterUser(false)
+    User.setisLoggedIn(false)
+    Admin.setRegisterAdmin(false)
+    User.setadminLoggin(true)
+    Admin.setadminLoggedIn (false)
+  }
+  function handleOnClickLogin()
+  {
+    User.setRegisterUser(false)
+    User.setisLoggedIn(false)
+    Admin.setRegisterAdmin(false)
+    User.setadminLoggin(false)
+    Admin.setadminLoggedIn (false)
+  } 
+   
+    const handlegetOTP=()=>{
+      axios.post('http://localhost:5000/getOTP', {
+        
+        adhaar_number:adhar,
+      
+      })
+      .then((response) => {
+
+        console.log(response);
+        
+          User.setUserOTP(true)
+        
+
+      }, (error) => {
+        console.log(error);
+      });
+
+    }
+
 
   function handleOnClick()
   {
@@ -31,16 +103,17 @@ export default function Adminlogin() {
   }
   
   const navigate=useNavigate()
-    const onFinish = ({firstName,lastName,email,password}) => {
+    const onFinish = ({firstName,lastName,email,password,adhaar_number}) => {
         console.log('Received values of form: ',    firstName,
         lastName,
-        email,
+        email,adhaar_number,
         password);
         axios.post('http://localhost:5000/admin-login', {
           firstName,
           lastName,
           email,
-          password
+          password,
+          adhaar_number
         })
         .then((response) => {
           console.log(response)
@@ -53,7 +126,8 @@ export default function Adminlogin() {
             firstName,
             lastName,
             email,
-            password
+            password,
+            adhaar_number
             })
     User.setshowVotingPage(false);
     User.setshowCandidateDetails(false);
@@ -102,6 +176,12 @@ export default function Adminlogin() {
         <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="email" />
       </Form.Item>
       <Form.Item
+        name="adhaar_number"
+        rules={[{ required: true, message: 'Please input your Aadhar Number!' }]}
+      >
+        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Aadhar number"  onChange={handleadharonchange} />
+      </Form.Item>
+      <Form.Item
         name="password"
         rules={[{ required: true, message: 'Please input password !' }]}
       >
@@ -110,10 +190,44 @@ export default function Adminlogin() {
         
           placeholder="password"
         />
+          
+          { !User.UserOTP && !verificationDone && <Form.Item> 
+        <Button type="primary" onClick={handlegetOTP} className="button-17" >
+         GetOTP
+        </Button>
+      </Form.Item>}
+      {/* OTP logic */}
+        
+     {User.UserOTP && !verificationDone && <> <Form.Item
+        name="OTP"
+        rules={[{ required: true, message: 'Please input your OTP!' }]}
+      >
+        <Input
+          prefix={<LockOutlined className="site-form-item-icon" /> 
+          }
+          
+          placeholder="OTP" 
+          onChange={handleOTP}
+        />
+        
+        </Form.Item> 
+         <Form.Item>
+        <Button type="primary"  className="button-17" onClick={handleVerifyOTP}>
+        Verify OTP
+        </Button>
+      </Form.Item> </> }
+     { verificationDone && <div class="success-msg">
+  <i class="fa fa-check"></i>
+  OTP verified successfully.You can Rgister Now.
+</div>}
+ { wrongOTP && <div class="failure-msg">
+  <i class="fa fa-check"></i>
+  Wrong OTP.Try Again
+</div>}
       </Form.Item>
       <div className='center-b'>
       <Form.Item>
-        <Button type="primary" htmlType="submit" className="button-17">
+        <Button type="primary" htmlType="submit" className="button-17 " disabled id="Register">
           Log in as Admin
         </Button>
         <h4>OR</h4>   <button  onClick={handleOnClickRegister} className="button-17">
