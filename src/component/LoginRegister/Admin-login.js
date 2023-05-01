@@ -235,14 +235,14 @@ export default function Adminlogin() {
       </Form.Item>
       <Form.Item
         name="password"
-        rules={[{ required: true, message: 'Please input password !' }]}
+        rules={[{ required: true, message: 'Please input your Password!' }]}
       >
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
-        
-          placeholder="password"
+          type="password"
+          placeholder="Password"
         />
-          
+      </Form.Item>
           { !Admin.AdminOTP && !verificationDone && <Form.Item> 
         <Button type="primary" onClick={handlegetOTP} className="button-17" >
          GetOTP
@@ -284,7 +284,7 @@ export default function Adminlogin() {
   <i class="fa fa-check"></i>
   Wrong Adhar
 </div>}</div>
-      </Form.Item>
+     
       <div className='center-b'>
       <Form.Item>
         <Button type="primary" htmlType="submit" className="button-17 " disabled id="Register">
