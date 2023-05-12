@@ -5,7 +5,7 @@ import  {createContext, useState} from 'react';
  const AdminContext=createContext();
 function UserProvider({children}){
     const [User, setUser] = useState("Shreyanshi");
-    const [isLoggedIn, setisLoggedIn] = useState(false);
+    const [isLoggedIn, setisLoggedIn] = useState(true);
     const [showVoterProfile, setshowVoterProfile] = useState(false);
     const [showCandidateDetails, setshowCandidateDetails] = useState(false);
     const [showVotingPage, setshowVotingPage] = useState(false);
@@ -15,6 +15,11 @@ function UserProvider({children}){
     const [adminLoggin, setadminLoggin] = useState(false);
     const[Voted,setVoted]=useState(false);
     const [RegisterUser, setRegisterUser] = useState(false);
+    const [Contact, setContact] = useState(false);
+    const [FAQ, setFAQ] = useState(false);
+
+    
+
     const [UserOTP, setUserOTP] = useState(false)
     const setAllFalse=()=>{
      //   setUser({firstName:"shreyanshi",lastName:"shukla",email:"sdd",passsword:""})
@@ -28,6 +33,8 @@ function UserProvider({children}){
         setadminLoggin(false)
         setRegisterUser(false)
         setUserOTP(false);
+        setContact(false);
+        setFAQ(false)
 
 
 
@@ -35,7 +42,7 @@ function UserProvider({children}){
     }
     
     return (
-        <Context.Provider value={{Voted,UserOTP,setUserOTP,setVoted,setAllFalse,RegisterUser, setRegisterUser,adminLoggin,setadminLoggin,User,setUser,isLoggedIn,setisLoggedIn,showVoting,showVoterProfilePage,showCandidateProfilePage,setshowCandidateProfilePage,setshowVoterProfilePage,setshowVoting,showCandidateDetails,showVotingPage,setshowVotingPage,setshowCandidateDetails,showVoterProfile,setshowVoterProfile}}>
+        <Context.Provider value={{FAQ,setFAQ,Contact,setContact,Voted,UserOTP,setUserOTP,setVoted,setAllFalse,RegisterUser, setRegisterUser,adminLoggin,setadminLoggin,User,setUser,isLoggedIn,setisLoggedIn,showVoting,showVoterProfilePage,showCandidateProfilePage,setshowCandidateProfilePage,setshowVoterProfilePage,setshowVoting,showCandidateDetails,showVotingPage,setshowVotingPage,setshowCandidateDetails,showVoterProfile,setshowVoterProfile}}>
             {children}
         </Context.Provider>
     )

@@ -51,6 +51,18 @@ function ResponsiveAppBar() {
     Admin.setadminLoggedIn(false);
 
   };
+  const handleContact=()=>{
+    console.log("clickedd")
+    User.setAllFalse();
+    User.setisLoggedIn(true)
+    User.setContact(true)
+  }
+  const handleFAQ=()=>{
+    console.log("clickedd")
+    User.setAllFalse();
+    User.setisLoggedIn(true)
+    User.setFAQ(true)
+  }
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
    
@@ -96,30 +108,7 @@ function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="left">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+           
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
@@ -141,15 +130,32 @@ function ResponsiveAppBar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+        
               <Button
-                key={page}
+              
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
+              > Home
               </Button>
-            ))}
+              <Button
+               
+                onClick={handleContact}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >Contact-Us
+              </Button>
+              <Button
+           
+                onClick={handleFAQ}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >FAQ
+              </Button>
+              <Button
+          
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >About
+              </Button>
+ 
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

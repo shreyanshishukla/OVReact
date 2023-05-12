@@ -23,6 +23,7 @@ const Admin=useContext(AdminContext)
        {Admin.RegisterAdmin && <RegisterAdmin/>}
        {User.adminLoggin && <Adminlogin/>}
        {Admin.adminLoggedIn && <AdminPortal/>}
+       
        </div>
        </>
   

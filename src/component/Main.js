@@ -10,6 +10,8 @@ import backgroundImage from './../bg.png'
 import CandidateProfilePage from './Candidate/CandidateProfilePage';
 import './Main.css'
 import Error from './Error';
+import Contact from './menubar/Contact/Contact';
+import FAQ from './menubar/FAQ/FAQ';
 
 
 
@@ -83,6 +85,9 @@ export default function Main() {
  {User.showVotingPage && User.Voted && <Error/>}
 {User.showCandidateProfilePage && <CandidateProfilePage/>}
 {User.showVoterProfilePage && <VoterProfilePage/>}
+{User.Contact && <Contact/>}
+{User.FAQ && <FAQ/>}
+
 
 
  <FixedBottomNavigation/>
