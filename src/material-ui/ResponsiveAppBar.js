@@ -37,19 +37,6 @@ function ResponsiveAppBar() {
 
   const User=useContext(Context)
   
-  const handleContact=()=>{
-    setAnchorElUser(null);
-    console.log("ghj")
-
-    console.log(User.Contact)
-    const a=User.isLoggedIn;
-    const b=Admin.adminLoggedIn;
-    User.setAllFalse();
-    Admin.setAllFalse();
-    User.setisLoggedIn(a);
-    Admin.setadminLoggedIn(b);
-    User.setContact(!User.Contact)
-  }
 
   const handleLogout = () => {
     setAnchorElUser(null);
@@ -65,9 +52,22 @@ function ResponsiveAppBar() {
     Admin.setadminLoggedIn(false);
 
   };
+  const handleContact=()=>{
+    console.log("clickedd")
+    User.setAllFalse();
+    User.setisLoggedIn(true)
+    User.setContact(!User.Contact)
+
+  }
+  const handleFAQ=()=>{
+    console.log("clickedd")
+    User.setAllFalse();
+    User.setisLoggedIn(true)
+    User.setFAQ(!User.Contact)
+  }
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-    console.log("DFdg")
+   
    
 
   };

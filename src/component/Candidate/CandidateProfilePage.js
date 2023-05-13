@@ -9,6 +9,7 @@ import bjp from '../../Images/bjp.png'
 import congress from '../../Images/congress.jpg'
 import LDP from '../../Images/LDP.webp'
 import SP from '../../Images/samajwadi party.png'
+import general from '../../Images/generall.png'
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#A6A9C8',
   ...theme.typography.body2,
@@ -56,7 +57,8 @@ export default function CandidateProfilePage() {
             (candidate.party.toLowerCase()=='bjp') &&<img src={bjp} className='partylogo' />}
             {(candidate.party.toLowerCase()=='ldp') &&<img src={LDP} className='partylogo' />}
             {(candidate.party.toLowerCase()=='samajwadi party') &&<img src={SP} className='partylogo' />}
-            {(candidate.party.toLowerCase()=='congress') &&<img src={congress} className='partylogo' /> } </div></div>
+            {(candidate.party.toLowerCase()=='congress') &&<img src={congress} className='partylogo' /> } 
+            {(candidate.party.toLowerCase()!='congress') && (candidate.party.toLowerCase()!='samajwadi party') && (candidate.party.toLowerCase()!='sldp') && (candidate.party.toLowerCase()!='bjp') &&<img src={general} className='partylogo' /> } </div></div>
           </div>))}
           </div>
      

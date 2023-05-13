@@ -25,8 +25,7 @@ const Admin=useContext(AdminContext)
        {User.adminLoggin && <Adminlogin/>}
        {User.Contact && <Contact/>}
        {Admin.adminLoggedIn && <AdminPortal/>}
-
-
+       
        </div>
        </>
   
