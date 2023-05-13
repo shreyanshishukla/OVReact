@@ -5,6 +5,7 @@ import { Context , AdminContext} from '../Context';
 import Adminlogin from './LoginRegister/Admin-login';
 import AdminPortal from './Admin/AdminPortal';
 import Register from './LoginRegister/Register';
+import Contact from './menubar/Contact';
 import './Main.css'
 import RegisterAdmin from './LoginRegister/RegisterAdmin';
 
@@ -22,7 +23,10 @@ const Admin=useContext(AdminContext)
        { User.isLoggedIn && <Main/>}
        {Admin.RegisterAdmin && <RegisterAdmin/>}
        {User.adminLoggin && <Adminlogin/>}
+       {User.Contact && <Contact/>}
        {Admin.adminLoggedIn && <AdminPortal/>}
+
+
        </div>
        </>
   

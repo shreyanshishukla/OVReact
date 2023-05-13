@@ -22,6 +22,7 @@ const settings = [ 'Logout'];
 
 function ResponsiveAppBar() {
   const Admin=useContext(AdminContext)
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const pages = ['Home', 'Contact', 'FAQ','Complaint Corner'];
@@ -33,9 +34,22 @@ function ResponsiveAppBar() {
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   }
+
   const User=useContext(Context)
   
+  const handleContact=()=>{
+    setAnchorElUser(null);
+    console.log("ghj")
 
+    console.log(User.Contact)
+    const a=User.isLoggedIn;
+    const b=Admin.adminLoggedIn;
+    User.setAllFalse();
+    Admin.setAllFalse();
+    User.setisLoggedIn(a);
+    Admin.setadminLoggedIn(b);
+    User.setContact(!User.Contact)
+  }
 
   const handleLogout = () => {
     setAnchorElUser(null);
@@ -53,6 +67,7 @@ function ResponsiveAppBar() {
   };
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+    console.log("DFdg")
    
 
   };
@@ -96,30 +111,7 @@ function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="left">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+      
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
@@ -141,15 +133,18 @@ function ResponsiveAppBar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+          <MenuItem key={"Home"} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="left">{"Home"}</Typography>
+                </MenuItem>
+                <MenuItem key={"Contact"} onClick={handleContact}>
+                  <Typography textAlign="left">{"Contact"}</Typography>
+                </MenuItem>
+                <MenuItem key={"FAQ"} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="left">{"FAQ"}</Typography>
+                </MenuItem>
+                <MenuItem key={"Complaint-Corner"} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="left">{"Complaint-Corner"}</Typography>
+                </MenuItem>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

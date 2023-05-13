@@ -16,6 +16,8 @@ function UserProvider({children}){
     const[Voted,setVoted]=useState(false);
     const [RegisterUser, setRegisterUser] = useState(false);
     const [UserOTP, setUserOTP] = useState(false)
+    const [Contact, setContact] = useState(false)
+
     const setAllFalse=()=>{
      //   setUser({firstName:"shreyanshi",lastName:"shukla",email:"sdd",passsword:""})
         setshowVoterProfile(false)
@@ -27,15 +29,14 @@ function UserProvider({children}){
         setshowVoting(false)
         setadminLoggin(false)
         setRegisterUser(false)
+        setContact(false)
         setUserOTP(false);
-
-
 
 
     }
     
     return (
-        <Context.Provider value={{Voted,UserOTP,setUserOTP,setVoted,setAllFalse,RegisterUser, setRegisterUser,adminLoggin,setadminLoggin,User,setUser,isLoggedIn,setisLoggedIn,showVoting,showVoterProfilePage,showCandidateProfilePage,setshowCandidateProfilePage,setshowVoterProfilePage,setshowVoting,showCandidateDetails,showVotingPage,setshowVotingPage,setshowCandidateDetails,showVoterProfile,setshowVoterProfile}}>
+        <Context.Provider value={{Contact,setContact,Voted,UserOTP,setUserOTP,setVoted,setAllFalse,RegisterUser, setRegisterUser,adminLoggin,setadminLoggin,User,setUser,isLoggedIn,setisLoggedIn,showVoting,showVoterProfilePage,showCandidateProfilePage,setshowCandidateProfilePage,setshowVoterProfilePage,setshowVoting,showCandidateDetails,showVotingPage,setshowVotingPage,setshowCandidateDetails,showVoterProfile,setshowVoterProfile}}>
             {children}
         </Context.Provider>
     )
