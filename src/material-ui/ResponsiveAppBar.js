@@ -63,7 +63,7 @@ function ResponsiveAppBar() {
     console.log("clickedd")
     User.setAllFalse();
     User.setisLoggedIn(true)
-    User.setFAQ(!User.Contact)
+    User.setFAQ(!User.FAQ)
   }
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -139,7 +139,7 @@ function ResponsiveAppBar() {
                 <MenuItem key={"Contact"} onClick={handleContact}>
                   <Typography textAlign="left">{"Contact"}</Typography>
                 </MenuItem>
-                <MenuItem key={"FAQ"} onClick={handleCloseNavMenu}>
+                <MenuItem key={"FAQ"} onClick={handleFAQ}>
                   <Typography textAlign="left">{"FAQ"}</Typography>
                 </MenuItem>
                 <MenuItem key={"Complaint-Corner"} onClick={handleCloseNavMenu}>
