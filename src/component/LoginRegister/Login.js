@@ -171,8 +171,7 @@ export default function Login() {
         });
 
       };
-  return (
-    <>
+  return ( <>
     <div className='Absolute-Center' >
     <header>
       <h2>Login</h2>
@@ -289,10 +288,8 @@ export default function Login() {
       </Form.Item>
     </Form>
     </div>
-  
-  </>
+   </>
+
   )
 }
-
-
 

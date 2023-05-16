@@ -5,7 +5,7 @@ import  {createContext, useState} from 'react';
  const AdminContext=createContext();
 function UserProvider({children}){
     const [User, setUser] = useState("Shreyanshi");
-    const [isLoggedIn, setisLoggedIn] = useState(true);
+    const [isLoggedIn, setisLoggedIn] = useState(false);
     const [showVoterProfile, setshowVoterProfile] = useState(false);
     const [showCandidateDetails, setshowCandidateDetails] = useState(false);
     const [showVotingPage, setshowVotingPage] = useState(false);
@@ -17,6 +17,9 @@ function UserProvider({children}){
     const [RegisterUser, setRegisterUser] = useState(false);
     const [Contact, setContact] = useState(false);
     const [FAQ, setFAQ] = useState(false);
+    const [Home, setHome] = useState(false);
+    const [About, setAbout] = useState(false);
+
 
     
 
@@ -33,8 +36,11 @@ function UserProvider({children}){
         setadminLoggin(false)
         setRegisterUser(false)
         setUserOTP(false);
+        setHome(false)
         setContact(false);
         setFAQ(false)
+        setAbout(false);
+
 
 
 
@@ -42,7 +48,7 @@ function UserProvider({children}){
     }
     
     return (
-        <Context.Provider value={{FAQ,setFAQ,Contact,setContact,Voted,UserOTP,setUserOTP,setVoted,setAllFalse,RegisterUser, setRegisterUser,adminLoggin,setadminLoggin,User,setUser,isLoggedIn,setisLoggedIn,showVoting,showVoterProfilePage,showCandidateProfilePage,setshowCandidateProfilePage,setshowVoterProfilePage,setshowVoting,showCandidateDetails,showVotingPage,setshowVotingPage,setshowCandidateDetails,showVoterProfile,setshowVoterProfile}}>
+        <Context.Provider value={{Home, setHome,About, setAbout,FAQ,setFAQ,Contact,setContact,Voted,UserOTP,setUserOTP,setVoted,setAllFalse,RegisterUser, setRegisterUser,adminLoggin,setadminLoggin,User,setUser,isLoggedIn,setisLoggedIn,showVoting,showVoterProfilePage,showCandidateProfilePage,setshowCandidateProfilePage,setshowVoterProfilePage,setshowVoting,showCandidateDetails,showVotingPage,setshowVotingPage,setshowCandidateDetails,showVoterProfile,setshowVoterProfile}}>
             {children}
         </Context.Provider>
     )
@@ -51,12 +57,16 @@ function AdminProvider({children}){
    const [AddCandidate, setAddCandidate] = useState(false);
    const [DeclareResult, setDeclareResult] = useState(false);
     const [ShowAnalytics, setShowAnalytics] = useState(false);
-    const [adminLoggedIn, setadminLoggedIn] = useState(false);
+    const [adminLoggedIn, setadminLoggedIn] = useState(true);
     const [RegisterAdmin, setRegisterAdmin] = useState(false)
     const [CandidateAddedSuccessfully, setCandidateAddedSuccessfully] = useState(false)
     const [AdminOTP, setAdminOTP] = useState(false)
     const [Error, setError] = useState(false)
     const [DeleteCandidate, setDeleteCandidate] = useState(false)
+    const [Contact, setContact] = useState(false);
+    const [FAQ, setFAQ] = useState(false);
+    const [Home, setHome] = useState(false);
+    const [About, setAbout] = useState(false);
 
     const [Admin, setAdmin] = useState({});
 
@@ -72,13 +82,16 @@ function AdminProvider({children}){
         setAdminOTP(false);
         setAdminOTP(false);
         setDeleteCandidate(false)
-
+        setHome(false)
+        setContact(false);
+        setFAQ(false)
+        setAbout(false);
         
 
     }
 
     return (
-        <AdminContext.Provider value={{DeleteCandidate,setDeleteCandidate,CandidateAddedSuccessfully,setAdminOTP,AdminOTP, setCandidateAddedSuccessfully,Error, setError,setAllFalse,RegisterAdmin, setRegisterAdmin,Admin,setAdmin,ShowAnalytics,adminLoggedIn,setadminLoggedIn,setShowAnalytics,setDeclareResult,DeclareResult,AddCandidate, setAddCandidate}}>
+        <AdminContext.Provider value={{Home, setHome,About, setAbout,FAQ,setFAQ,Contact,setContact,DeleteCandidate,setDeleteCandidate,CandidateAddedSuccessfully,setAdminOTP,AdminOTP, setCandidateAddedSuccessfully,Error, setError,setAllFalse,RegisterAdmin, setRegisterAdmin,Admin,setAdmin,ShowAnalytics,adminLoggedIn,setadminLoggedIn,setShowAnalytics,setDeclareResult,DeclareResult,AddCandidate, setAddCandidate}}>
             {children}
        </AdminContext.Provider>
     )

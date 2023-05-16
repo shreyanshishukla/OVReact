@@ -4,7 +4,7 @@ import { Button, Form, Input } from 'antd';
 import { AdminContext,Context } from '../../Context';
 import axios from 'axios';
 import { useEffect } from 'react';
-
+import './Admin.css'
 
 
 export default function AddCandidates() {
@@ -50,7 +50,11 @@ export default function AddCandidates() {
       };
   return (
     <>
-    <div className="Add">Add candidates!</div>
+
+    <div className='ad'>
+    <h1 class="gamma lato thin uppercase ls-xlarge">
+		Add candidates!</h1>
+
     <Form
       name="normal_login"
       className="login-form"
@@ -106,6 +110,7 @@ export default function AddCandidates() {
         </Button>
       </Form.Item>
     </Form>
+  </div>
   </>
   )
 }

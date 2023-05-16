@@ -25,7 +25,7 @@ function ResponsiveAppBar() {
   const Admin=useContext(AdminContext)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const pages = ['Home', 'Contact', 'FAQ','Complaint Corner'];
+  const pages = ['Home', 'Contact', 'Answer-Query','About'];
   
 
   const handleOpenNavMenu = (event) => {
@@ -35,6 +35,7 @@ function ResponsiveAppBar() {
     setAnchorElUser(event.currentTarget);
   }
   const User=useContext(Context)
+
   
 
 
@@ -54,27 +55,27 @@ function ResponsiveAppBar() {
   };
   const handleContact=()=>{
     console.log("clickedd")
-    User.setAllFalse();
-    User.setisLoggedIn(true)
-    User.setContact(!User.Contact)
+    Admin.setAllFalse();
+    Admin.setadminLoggedIn(true)
+    Admin.setContact(!Admin.Contact)
   }
   const handleFAQ=()=>{
-    console.log("clickedd")
-    User.setAllFalse();
-    User.setisLoggedIn(true)
-    User.setFAQ(!User.FAQ)
+    console.log("clicked")
+    Admin.setAllFalse();
+    Admin.setadminLoggedIn(true)
+    Admin.setFAQ(!Admin.FAQ)
   }
   const handleAbout=()=>{
     console.log("clickedd")
-    User.setAllFalse();
-    User.setisLoggedIn(true)
-    User.setAbout(!User.About)
+    Admin.setAllFalse();
+    Admin.setadminLoggedIn(true)
+    Admin.setAbout(!Admin.About)
   }
   const handleHome=()=>{
     console.log("clickedd")
-    User.setAllFalse();
-    User.setisLoggedIn(true)
-    User.setHome(true)
+    Admin.setAllFalse();
+    Admin.setadminLoggedIn(true)
+    Admin.setHome(true)
   }
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -158,7 +159,7 @@ function ResponsiveAppBar() {
            
                 onClick={handleFAQ}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-              >FAQ
+              >Answer-Query
               </Button>
               <Button
           
