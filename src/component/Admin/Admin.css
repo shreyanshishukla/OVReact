@@ -9,6 +9,24 @@
   background: rgba(211, 105, 119, 0.2);
   
  }
+.ad{
+  display: flex; 
+
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  text-align: center; 
+}
+.lato{font-family: 'Lato'}
+.gamma {
+  font-size: 2.5rem; /* 36 / 18 = 2 */
+  margin-bottom: 0.825rem;
+}
+.thin{font-weight: 300;}
+.ls-xlarge{letter-spacing: 12px;}
+
+.uppercase{text-transform: uppercase;}
 
 .button-1 {
   background-color: #EA4C89;

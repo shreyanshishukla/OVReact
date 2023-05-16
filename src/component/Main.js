@@ -12,6 +12,8 @@ import './Main.css'
 import Error from './Error';
 import Contact from './menubar/Contact/Contact';
 import FAQ from './menubar/FAQ/FAQ';
+import Home from './menubar/Home/Home';
+import About from './menubar/About/About';
 
 
 
@@ -87,6 +89,13 @@ export default function Main() {
 {User.showVoterProfilePage && <VoterProfilePage/>}
 {User.Contact && <Contact/>}
 {User.FAQ && <FAQ/>}
+{User.Home && <Home/>}
+{User.About && <About/>}
+{Admin.Contact && <Contact/>}
+{Admin.FAQ && <FAQ/>}
+{Admin.Home && <Home/>}
+{Admin.About && <About/>}
+
 
 
 

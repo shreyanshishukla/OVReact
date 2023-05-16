@@ -1,7 +1,7 @@
 import React ,{useContext} from 'react'
 import { AdminContext,Context } from '../../Context';
 import AddCandidates from './AddCandidate';
-import ResponsiveAppBar from '../../material-ui/ResponsiveAppBar'
+import ResponsiveAppBar from '../../material-ui/RA2'
 import Success from './Success';
 import Error from './Error';
 import Results from './Results'
