@@ -5,9 +5,11 @@ import ResponsiveAppBar from '../../material-ui/RA2'
 import Success from './Success';
 import Error from './Error';
 import Results from './Results'
-import Analytics from './Analytics'
 import Delete from './Delete';
-
+import Contact from '../menubar/Contact/Contact';
+import About from '../menubar/About/About'
+import Home from '../menubar/Home2/Home2'
+import FAQ from './FAQ'
 
 export default function AdminPortal() {
     const Admin=useContext(AdminContext)
@@ -19,6 +21,7 @@ export default function AdminPortal() {
       User.setAllFalse();
       Admin.setadminLoggedIn(true)
       Admin.setAddCandidate(true)
+      
 
     }
     const handleDeclareResults=()=>
@@ -29,21 +32,14 @@ export default function AdminPortal() {
       Admin.setDeclareResult(true)
 
     }
-    const handldeAnalytics=()=>
-    {
-      Admin.setAllFalse();
-      User.setAllFalse();
-      Admin.setadminLoggedIn(true)
-      Admin.setShowAnalytics(true)
-
-    }
+   
     const handleDeleteCandidate=()=>{
       Admin.setAllFalse();
       User.setAllFalse();
       Admin.setadminLoggedIn(true)
       Admin.setDeleteCandidate(true)
     }
-
+  
   return (
   <>
       
@@ -51,14 +47,16 @@ export default function AdminPortal() {
      <div style={{margin:"5vh"}}>
      {!Admin.AddCandidate && <button onClick={handleaddCandidate} className='button-1'>Add a candidate</button>}
       {!Admin.DeclareResult && <button onClick={handleDeclareResults} className='button-1'>Declare Results</button>}
-      {!Admin.ShowAnalytics &&<button onClick={handldeAnalytics} className='button-1'>Display analytics</button>}
       {!Admin.DeleteCandidate &&<button onClick={handleDeleteCandidate} className='button-1'>Delete a candidate</button>}
       {Admin.AddCandidate && <AddCandidates/>}
       {Admin.DeclareResult && <Results/>}
-      {Admin.ShowAnalytics && <Analytics/>}
       {Admin.Error && <Error/>}
       {Admin.CandidateAddedSuccessfully && <Success/>}
       {Admin.DeleteCandidate && <Delete/>}
+      {Admin.Contact && <Contact/>}
+{Admin.FAQ && <FAQ/>}
+{!Admin.AddCandidate && !Admin.Contact && !Admin.FAQ && !Admin.DeclareResult && !Admin.About && !Admin.DeleteCandidate &&  ! Admin.Error && !Admin.CandidateAddedSuccessfully && !Admin.DeleteCandidate &&  <Home/>}
+{Admin.About && <About/>}
 
       
 

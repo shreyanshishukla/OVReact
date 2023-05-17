@@ -105,9 +105,9 @@ export default function AddCandidates() {
 
       <Form.Item>
     
-        <Button type="primary" htmlType="submit" className="login-form-button">
+        <button  type='submit' className="button-249">
           Add Candidate
-        </Button>
+        </button>
       </Form.Item>
     </Form>
   </div>

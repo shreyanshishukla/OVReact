@@ -19,6 +19,17 @@ p
   z-index: -1;
   overflow-x: hidden;
 }
+.blue-bg2
+  {position: fixed;
+  
+  background-size: cover;
+  background-color: #58aff6;
+  bottom: 0;
+  height: 200px;
+  width: 100vw;
+  z-index: -1;
+  overflow-x: hidden;
+}
 .white-bg
  { position: absolute;
   top: 0;
@@ -29,6 +40,17 @@ p
   height: 100vh;
   transform: skewY(5deg);
   z-index: -1;}
+  .white-bg2
+ { position: absolute;
+  top: 0;
+  background-color: #fff;
+  min-height: 500px;
+  margin: 210px 0px;
+  width: 100vw;
+  height: 100vh;
+  transform: skewY(5deg);
+  z-index: -1;}
+
 
 .content
 {  position: absolute;

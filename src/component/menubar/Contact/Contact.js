@@ -27,24 +27,22 @@ export default function Contact() {
       
 			<div class="col-8 col-md-6">
         <div class="jelly-card">
-				  <div class="card py-3 ">
+				  <div class="cards py-3 ">
             
             <div class="row">
             <div class="col-10 col-md-4 col-lg-3 jelly-bloc text-center text-md-start">
                 
               </div>
                 <div class="col-12 col-md-8 col-lg-8">
-                <div class="card-body">
+                <div class="card-body slowfloat2s">
                   <h5 class="card-title">
                     Shreyanshi Shukla
                   </h5>
                   <div class="line"></div>
                   <p class="card-text">
-                  Software Developer
-                  </p>
-                  <p class="card-text">
-                  <img src={phn} className='tools'></img> 892832737
-                  <img src={email} className='tools'></img> shreyashi1217@gmail.com
+                  Software Developer<br/>
+                  <img src={phn} className='tools'/> 892832737<br/>
+                  <img src={email} className='tools'></img> shreyashi1217@gmail.com<br/>
                   <img src={locc} className='tools'></img>Lucknow,Uttar Pradesh,India
                   </p>
                    <i class="fas fa-disease slowfloat3s"></i>
@@ -66,25 +64,23 @@ export default function Contact() {
       
 			<div class="col-8 col-md-6">
         <div class="jelly-card">
-				  <div class="card py-3 ">
+				  <div class="cards py-3 ">
             
             <div class="row">
             <div class="col-10 col-md-4 col-lg-3 jelly-bloc text-center text-md-start">
               
               </div>
                 <div class="col-12 col-md-8 col-lg-8">
-                <div class="card-body">
+                <div class="card-body slowfloat2s">
                 <h5 class="card-title">
                     Shashank Pandey
                   </h5>
                   <div class="line"></div>
                   <p class="card-text">
-                  Software Developer
-                  </p>
-                  <p class="card-text">
-                  <img src={phn} className='tools'></img> 892832737
-                  <img src={email} className='tools'></img> shashankpandey@gmail.com
-                  <img src={locc} className='tools'></img>Lucknow,Uttar Pradesh,India
+                  Software Developer<br/>
+                  <img src={phn} className='tools'></img> 892832737<br/>
+                  <img src={email} className='tools'></img> shashankpandey@gmail.com<br/>
+                  <img src={locc} className='tools'></img>Lucknow,Uttar Pradesh,India<br/>
                   </p>
                    <i class="fas fa-disease slowfloat3s"></i>
                 </div>

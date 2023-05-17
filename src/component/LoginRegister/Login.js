@@ -248,7 +248,7 @@ export default function Login() {
       </Form.Item> </> }
      { verificationDone && <div class="success-msg">
   <i class="fa fa-check"></i>
-  OTP verified successfully.You can Rgister Now.
+  OTP verified successfully.You can Login Now.
 </div>}
  { wrongOTP && <div class="failure-msg">
   <i class="fa fa-check"></i>

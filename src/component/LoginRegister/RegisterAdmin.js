@@ -235,11 +235,11 @@ export default function RegisterAdmin() {
         Verify OTP
         </Button>
       </Form.Item> </> }
-     { verificationDone && <div class="success-msg">
+     { verificationDone && !wrongOTP &&<div class="success-msg">
   <i class="fa fa-check"></i>
   OTP verified successfully.You can Rgister Now.
 </div>}
- { wrongOTP && <div class="failure-msg">
+ { wrongOTP &&  !verificationDone && <div class="failure-msg">
   <i class="fa fa-check"></i>
   Wrong OTP.Try Again
 </div>}

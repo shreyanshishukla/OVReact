@@ -89,12 +89,9 @@ export default function Main() {
 {User.showVoterProfilePage && <VoterProfilePage/>}
 {User.Contact && <Contact/>}
 {User.FAQ && <FAQ/>}
-{User.Home && <Home/>}
+{!User.FAQ && !User.Contact  && !User.About && !User.showVoterProfilePage && !User.showCandidateProfilePage && !User.showVotingPage &&<Home/>}
 {User.About && <About/>}
-{Admin.Contact && <Contact/>}
-{Admin.FAQ && <FAQ/>}
-{Admin.Home && <Home/>}
-{Admin.About && <About/>}
+
 
 
 

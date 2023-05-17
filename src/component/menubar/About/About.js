@@ -17,6 +17,11 @@ export default function About() {
     nulla id libero rutrum venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam molestie ac velit vel blandit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
     egestas.</p>
 </div>
+
+        <div class="blue-bg2"></div>
+<div class="white-bg2 shadow"></div>
+
+
     </div>
   )
 }

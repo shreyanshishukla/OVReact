@@ -25,7 +25,6 @@ export default function VotingPage() {
   const User=useContext(Context)
   const [Candidatesdata, setCandidatesdata] = useState([])
   const [deleted, setdeleted] = useState(true)
-
   
   useEffect(() => {
   
@@ -51,7 +50,7 @@ export default function VotingPage() {
 
 
   return (
-  <>
+  <div className='outerc'>
  
     <h1 className='text'>
       Please Click on the Vote Button in front of the candidate to vote the candidate.
@@ -92,7 +91,7 @@ export default function VotingPage() {
     </div>  
     
     
-  </>
+  </div>
   )
 }
 

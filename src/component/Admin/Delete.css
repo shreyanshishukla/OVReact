@@ -112,10 +112,25 @@ h1{ color: #0c0808f0; font-family: 'Bitter', serif; font-size: 50px; font-weight
   top: 0;
   border-radius: 10px;
 }
+.outerc{
+  display: flex; 
+  margin-top:40px;
+  background: -webkit-linear-gradient(90deg, #181819f0 80%, #181819f0 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #181819f0 80%, #181819f0 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #181819f0 80%, #181819f0 90%); /* IE80 */
+  background:      -o-linear-gradient(90deg, #181819f0 80%, #181819f0 90%); /* Opera 11.80+ */
+  background:         linear-gradient(90deg, #181819f0 80%, #181819f0 90%); /* W3C */
+        
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  text-align: center; 
+}
 
 .card{
     display:flex;
-   background-color: #b8efe5b5;
+   background-color: #f1e7b905;
    /* #72e0b4;  */
    /* //9a9696 */
    width: fit-content;
@@ -126,7 +141,7 @@ h1{ color: #0c0808f0; font-family: 'Bitter', serif; font-size: 50px; font-weight
     
 }
 .card:nth-child(even) {
-    background-color: rgb(231, 200, 212);
+    background-color: rgba(160, 141, 147, 0.156);
   }
 
 .topflex{
@@ -146,12 +161,12 @@ h1{ color: #0c0808f0; font-family: 'Bitter', serif; font-size: 50px; font-weight
 }
 .img{
     align-items: right;
+    margin-left: 20px;
+    margin-bottom: 10px;
 }
 .container {
     position: relative;
     font-family: sans-serif;
-  
-    
 
   }
   
@@ -227,4 +242,7 @@ h1{ color: #0c0808f0; font-family: 'Bitter', serif; font-size: 50px; font-weight
   .container .box:hover {
     box-shadow: 0px 0px 20px 1px #ffbb763f;
     border: 1px solid rgba(255, 255, 255, 0.454);
+  }
+  .box{
+    color: hsla(204, 39%, 72%, 0.707);
   }

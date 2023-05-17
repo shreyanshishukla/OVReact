@@ -10,7 +10,7 @@ export default function Home() {
 	 <h1 class="beta uppercase montserrat regular line-after-heading">
 		Your Vote,Your Voice
 		</h1>
-		<p class="delta cardo regular italic">
+		<p class="delta cardo regular italic" style={{marginLeft:"23vw"}}>
 		Make your Vote count
 		</p>
 	 </div>

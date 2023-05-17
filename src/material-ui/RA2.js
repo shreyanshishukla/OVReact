@@ -54,7 +54,7 @@ function ResponsiveAppBar() {
 
   };
   const handleContact=()=>{
-    console.log("clickedd")
+    console.log(";k;kjlk")
     Admin.setAllFalse();
     Admin.setadminLoggedIn(true)
     Admin.setContact(!Admin.Contact)

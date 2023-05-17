@@ -1,4 +1,5 @@
 import { useSetState } from '@mantine/hooks';
+import { TroubleshootTwoTone } from '@mui/icons-material';
 import  {createContext, useState} from 'react';
 
  const Context = createContext();
@@ -17,7 +18,7 @@ function UserProvider({children}){
     const [RegisterUser, setRegisterUser] = useState(false);
     const [Contact, setContact] = useState(false);
     const [FAQ, setFAQ] = useState(false);
-    const [Home, setHome] = useState(false);
+    const [Home, setHome] = useState(true);
     const [About, setAbout] = useState(false);
 
 
@@ -56,7 +57,7 @@ function AdminProvider({children}){
    const [AddCandidate, setAddCandidate] = useState(false);
    const [DeclareResult, setDeclareResult] = useState(false);
     const [ShowAnalytics, setShowAnalytics] = useState(false);
-    const [adminLoggedIn, setadminLoggedIn] = useState(true);
+    const [adminLoggedIn, setadminLoggedIn] = useState(false);
     const [RegisterAdmin, setRegisterAdmin] = useState(false)
     const [CandidateAddedSuccessfully, setCandidateAddedSuccessfully] = useState(false)
     const [AdminOTP, setAdminOTP] = useState(false)
@@ -64,7 +65,7 @@ function AdminProvider({children}){
     const [DeleteCandidate, setDeleteCandidate] = useState(false)
     const [Contact, setContact] = useState(false);
     const [FAQ, setFAQ] = useState(false);
-    const [Home, setHome] = useState(false);
+    const [Home, setHome] = useState(true);
     const [About, setAbout] = useState(false);
 
     const [Admin, setAdmin] = useState({});
