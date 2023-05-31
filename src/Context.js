@@ -12,7 +12,7 @@ function UserProvider({children}){
     const [showVotingPage, setshowVotingPage] = useState(false);
     const [showVoterProfilePage, setshowVoterProfilePage] = useState(false);
     const [showCandidateProfilePage, setshowCandidateProfilePage] = useState(false);
-    const [showVoting, setshowVoting] = useState(true);
+    const [showVoting, setshowVoting] = useState(false);
     const [adminLoggin, setadminLoggin] = useState(false);
     const[Voted,setVoted]=useState(false);
     const [RegisterUser, setRegisterUser] = useState(false);
@@ -57,7 +57,7 @@ function AdminProvider({children}){
    const [AddCandidate, setAddCandidate] = useState(false);
    const [DeclareResult, setDeclareResult] = useState(false);
     const [ShowAnalytics, setShowAnalytics] = useState(false);
-    const [adminLoggedIn, setadminLoggedIn] = useState(false);
+    const [adminLoggedIn, setadminLoggedIn] = useState(true);
     const [RegisterAdmin, setRegisterAdmin] = useState(false)
     const [CandidateAddedSuccessfully, setCandidateAddedSuccessfully] = useState(false)
     const [AdminOTP, setAdminOTP] = useState(false)
@@ -67,6 +67,9 @@ function AdminProvider({children}){
     const [FAQ, setFAQ] = useState(false);
     const [Home, setHome] = useState(true);
     const [About, setAbout] = useState(false);
+    const [WalletAddress, setWalletAddress] = useState();
+    const [ElectionBlockchain, setElectionBlockchain] = useState();
+
 
     const [Admin, setAdmin] = useState({});
 
@@ -91,7 +94,7 @@ function AdminProvider({children}){
     }
 
     return (
-        <AdminContext.Provider value={{Home, setHome,About, setAbout,FAQ,setFAQ,Contact,setContact,DeleteCandidate,setDeleteCandidate,CandidateAddedSuccessfully,setAdminOTP,AdminOTP, setCandidateAddedSuccessfully,Error, setError,setAllFalse,RegisterAdmin, setRegisterAdmin,Admin,setAdmin,ShowAnalytics,adminLoggedIn,setadminLoggedIn,setShowAnalytics,setDeclareResult,DeclareResult,AddCandidate, setAddCandidate}}>
+        <AdminContext.Provider value={{WalletAddress,ElectionBlockchain, Home, setHome,About, setAbout,FAQ,setFAQ,Contact,setContact,DeleteCandidate,setDeleteCandidate,CandidateAddedSuccessfully,setAdminOTP,AdminOTP, setCandidateAddedSuccessfully,Error, setError,setAllFalse,RegisterAdmin, setRegisterAdmin,Admin,setAdmin,ShowAnalytics,adminLoggedIn,setadminLoggedIn,setShowAnalytics,setDeclareResult,DeclareResult,AddCandidate, setAddCandidate}}>
             {children}
        </AdminContext.Provider>
     )

@@ -50,7 +50,7 @@ export default function CandidateProfilePage() {
          <div className="info"> {candidate.firstName + candidate.lastName}
           <p>Age:{candidate.Age}</p>
           <p>  PartyName:{candidate.party}</p>
-          <p> Gender:{candidate.Gender}
+          <p> Gender:{candidate.gender}
              </p>
           </div> 
           <div   className='party'> <div><div>PartySymbol: </div>{ 
